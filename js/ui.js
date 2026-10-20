@@ -52,9 +52,9 @@ function renderHeader(route) {
     + '<button type="button" data-action="lang" data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button>'
     + "</div>"
     + '<a class="cart-link" href="#/order" aria-label="' + esc(ui().common.cart) + " " + cartCount() + '"><span>' + esc(ui().common.cart) + "</span><b>" + cartCount() + "</b></a>"
-    + '<button type="button" class="menu-btn" data-action="menu" aria-expanded="false">' + esc(ui().common.menu) + "</button>"
+    + '<button type="button" class="menu-btn" data-action="menu" aria-expanded="false" aria-controls="site-menu"><span class="menu-bars" aria-hidden="true"></span><span class="sr-only">' + esc(ui().common.menu) + "</span></button>"
     + "</div></div>"
-    + '<div class="mobile-nav" hidden><div class="wrap">' + navLinks(route) + "</div></div></header>";
+    + '<div class="mobile-nav" id="site-menu" hidden><div class="wrap">' + navLinks(route) + "</div></div></header>";
 }
 
 function renderFooter() {
@@ -350,7 +350,10 @@ function runSelfTest() {
 
 function onClick(event) {
   const el = event.target.closest("[data-action]");
-  if (!el) return;
+  if (!el) {
+    if (document.body.classList.contains("nav-open") && !event.target.closest(".site-head")) closeMenu();
+    return;
+  }
   const action = el.dataset.action;
   if (action === "menu") { toggleMenu(); return; }
   if (action === "lang") {

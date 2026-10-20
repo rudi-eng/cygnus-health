@@ -76,12 +76,6 @@ function renderShop() {
     const on = item[0] === shot ? " on" : "";
     return '<button type="button" class="thumb' + on + '" data-action="shot" data-src="' + item[0] + '"><img src="' + item[0] + '" alt="' + esc(item[1]) + '"></button>';
   }).join("");
-  const sizes = [7, 9].map(function (cm) {
-    const checked = choice.size === cm ? " checked" : "";
-    const title = cm === 7 ? s.size7 : s.size9;
-    const desc = cm === 7 ? s.size7d : s.size9d;
-    return '<label class="size-card"><input type="radio" name="size" value="' + cm + '"' + checked + "><span><strong>" + esc(title) + "</strong><small>" + esc(desc) + "</small></span></label>";
-  }).join("");
   const books = ["tr", "en", "both"].map(function (code) {
     const checked = choice.booklet === code ? " checked" : "";
     return '<label class="size-card"><input type="radio" name="booklet" value="' + code + '"' + checked + "><span>" + esc(bookletLabel(code)) + "</span></label>";
@@ -100,7 +94,6 @@ function renderShop() {
     + '<p class="lede">' + esc(s.lede) + "</p>"
     + '<p class="price-lg">' + esc(formatTL(window.ASLANA_CONFIG.priceTL)) + "</p>"
     + callout(ui().smallCallout)
-    + "<h2>" + esc(s.sizeTitle) + '</h2><div class="choice">' + sizes + "</div>"
     + "<h2>" + esc(s.bookTitle) + '</h2><div class="choice">' + books + "</div>"
     + '<div class="qty-block"><span>' + esc(s.qty) + '</span><div class="qty-row"><button type="button" data-action="shop-qty" data-dir="-1" aria-label="-">−</button><input id="shop-qty" inputmode="numeric" value="' + choice.qty + '"><button type="button" data-action="shop-qty" data-dir="1" aria-label="+">+</button></div></div>'
     + '<button type="button" class="btn wide" data-action="add-cart">' + esc(s.add) + "</button>"

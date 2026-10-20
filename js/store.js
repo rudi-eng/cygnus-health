@@ -46,8 +46,8 @@ function setLang(lang) {
   writeRaw("aslana-lang", lang === "en" ? "en" : "tr");
 }
 
-function normalizeSize(value) {
-  return Number(value) === 9 ? 9 : 7;
+function normalizeSize() {
+  return 7;
 }
 
 function normalizeBooklet(value) {
@@ -66,7 +66,19 @@ function cartKey(item) {
 
 function getCart() {
   const cart = readJson("aslana-cart", []);
-  return Array.isArray(cart) ? cart : [];
+  if (!Array.isArray(cart)) return [];
+  const merged = [];
+  cart.forEach(function (line) {
+    const item = {
+      booklet: normalizeBooklet(line.booklet),
+      size: normalizeSize(line.size),
+      qty: clampQty(line.qty)
+    };
+    const found = merged.find(function (row) { return cartKey(row) === cartKey(item); });
+    if (found) found.qty = clampQty(found.qty + item.qty);
+    else merged.push(item);
+  });
+  return merged;
 }
 
 function setCart(cart) {

@@ -38,11 +38,11 @@ window.COPY = {
     meta: {
       home: {
         title: "Aloe Vera Saksı Seti — Aslana Intelligence",
-        desc: "7 veya 9 cm saksıda tek aloe vera, 400 TL. Türkçe ve İngilizce kitapçık, tarifler ve bakım."
+        desc: "7 cm saksıda tek aloe vera, 400 TL. Türkçe ve İngilizce kitapçık, tarifler ve bakım."
       },
       shop: {
         title: "Satın al — Aloe Vera Saksı Seti",
-        desc: "Küçük aloe vera seti. 7 cm veya 9 cm saksı, tek bitki, 400 TL. Kitapçık dili seçilir."
+        desc: "Küçük aloe vera seti. 7 cm saksı, tek bitki, 400 TL. Kitapçık dili seçilir."
       },
       booklet: {
         title: "Kitapçık — Aloe vera",
@@ -54,7 +54,7 @@ window.COPY = {
       },
       care: {
         title: "Bakım — küçük aloe vera",
-        desc: "7 ve 9 cm saksı için sulama, ışık, şehir notu ve ilk hafta listesi."
+        desc: "7 cm saksı için sulama, ışık, şehir notu ve ilk hafta listesi."
       },
       order: {
         title: "Sepet ve sipariş — Aloe Vera Saksı Seti",
@@ -76,16 +76,16 @@ window.COPY = {
       caution: "Dikkat",
       steps: "Adımlar"
     },
-    smallCallout: "Bu set 7 veya 9 cm saksıda tek genç bitkidir. Yaprak kesmek için önce büyümesi gerekir.",
+    smallCallout: "Bu set 7 cm saksıda tek genç bitkidir. Yaprak kesmek için önce büyümesi gerekir.",
     home: {
       kicker: "01  —  Saksı seti",
       h1: "Küçük saksı. Tek bir aloe vera.",
-      lede: "7 veya 9 santimetrelik seramik saksıda bir genç bitki ve iki dilde bir kitapçık. Bitki bu ölçüde kesilmez. Önce evinize alışır. Kitapçık, bakım ve tarifler büyürken yanında durur.",
+      lede: "7 santimetrelik seramik saksıda bir genç bitki ve iki dilde bir kitapçık. Bitki bu ölçüde kesilmez. Önce evinize alışır. Kitapçık, bakım ve tarifler büyürken yanında durur.",
       ctaShop: "Seti incele",
       ctaBook: "Kitapçığı oku",
-      priceNote: "Tek bitki. 7 cm de 9 cm de aynı fiyat.",
+      priceNote: "Tek bitki. Saksı 7 cm.",
       facts: [
-        { t: "Tek fiyat", d: "7 cm ve 9 cm saksı aynıdır. Her saksıda bir bitki vardır." },
+        { t: "7 cm", d: "Her saksıda bir genç bitki vardır." },
         { t: "Önce büyür", d: "Bu ölçüde yaprak alınmaz. Dış yaprak kalınlaşınca kesim anlatılır." },
         { t: "İki dil", d: "Kitapçık Türkçe, İngilizce veya her iki dilde seçilir." }
       ],
@@ -93,7 +93,7 @@ window.COPY = {
       boxLede: "Süslü bir dolgu değil. Küçük bir bitki, doğru saksı ve kullanmayı anlatan kısa kitap.",
       box: [
         { t: "Bir genç aloe vera", d: "Kökleri tutmuş, kısa yapraklı. Türkiye'de sarısabır da denir." },
-        { t: "7 veya 9 cm saksı", d: "Mat seramik, drenaj delikli, altlıklı. İçinde sukulent toprağı." },
+        { t: "7 cm saksı", d: "Mat seramik, drenaj delikli, altlıklı. İçinde sukulent toprağı." },
         { t: "Kitapçık", d: "Basılı metin, sitedeki Kitapçık sayfası ile aynıdır." }
       ],
       useTitle: "Evde ne işe yarar",
@@ -113,12 +113,7 @@ window.COPY = {
     },
     shop: {
       kicker: "02  —  Mağaza",
-      lede: "Her sipariş bir saksı ve bir bitkidir. Ölçüyü seçin, kitapçığın dilini seçin.",
-      sizeTitle: "Saksı ölçüsü",
-      size7: "7 cm",
-      size7d: "En küçük başlangıç. Tek genç bitki.",
-      size9: "9 cm",
-      size9d: "Biraz daha geniş. Yine tek genç bitki.",
+      lede: "Her sipariş 7 cm saksıda bir bitkidir. Kitapçığın dilini seçin.",
       bookTitle: "Kitapçık",
       qty: "Adet",
       add: "Sepete ekle",
@@ -126,16 +121,16 @@ window.COPY = {
       includesTitle: "Bu fiyata dahil",
       includes: [
         "Bir genç aloe vera",
-        "Seçilen ölçüde drenajlı seramik saksı ve altlık",
+        "7 cm drenajlı seramik saksı ve altlık",
         "Sukulent toprağı",
         "Seçilen dilde basılı kitapçık",
         "Sitedeki bakım rehberi ve tarifler"
       ],
       ship: "Kargo fiyata dahil değildir. Ödeme ve kargo, sipariş mesajında netleşir.",
-      photo: "Fotoğraf küçük seti temsil eder. Saksı 7 veya 9 cm'dir.",
+      photo: "Fotoğraf küçük seti temsil eder. Saksı 7 cm'dir.",
       faqTitle: "Kısa sorular",
       faqs: [
-        { q: "7 cm ile 9 cm arasında fiyat farkı var mı?", a: "Yok. İkisi de tek genç bitkidir ve aynı fiyattadır. Fark yalnızca saksının çapıdır." },
+        { q: "Saksı kaç santimetre?", a: "7 cm. İçinde bir genç bitki vardır." },
         { q: "Gelir gelmez yaprak kesilir mi?", a: "Kesilmez. Bu ölçü bir jel kavanozu değildir. Bitki evde büyür. En az 8 sağlam yaprak, kalın bir dış yaprak ve 8 hafta gerekir." },
         { q: "Nasıl ödenir, nasıl gelir?", a: "Sepette bir sipariş metni hazırlanır. Onu iletirsiniz. Ödeme ve kargo o yazışmada netleşir. Bu sayfada kart çekimi yoktur." },
         { q: "Evde kedi veya köpek varsa?", a: "Aloe vera, ASPCA listesinde kedi, köpek ve atlar için zehirlidir. Saksıyı çiğneyemeyecekleri yere koyun." },
@@ -193,11 +188,11 @@ window.COPY = {
       readyTitle: "Yaprak kesmeye hazır mı?",
       readyLede: "Üçü de evet ise bir dış yaprak kesilebilir. Biri bile hayır ise tarifler bekler.",
       readyYes: "Kesebilirsiniz. Kitapçıktaki kesim adımlarını kullanın. Sonra en az dört hafta bekleyin.",
-      readyNo: "Bu bitki henüz hazır değil. Bakıma devam edin. 7 ve 9 cm saksılar bu hale çoğu zaman aylar sonra gelir.",
+      readyNo: "Bu bitki henüz hazır değil. Bakıma devam edin. 7 cm saksı bu hale çoğu zaman aylar sonra gelir.",
       ics: "Üç haftada bir kontrolü takvime ekle",
       icsDone: "Takvim dosyası indi. Su, ancak toprak kuruysa verilir.",
       repotTitle: "Saksı değiştirmek",
-      repot: "Acele etmeyin. 7 cm bitki, ancak kökler delikten çıkınca 9 cm saksıya geçer. 9 cm bitki bir sonraki ilkbaharda yaklaşık 12 cm saksıya geçebilir. Bir anda büyük saksıya almayın. Geniş toprakta su uzun kalır ve küçük kök çürür. Yeni saksıda da drenaj deliği olsun. Taşıdıktan sonra birkaç gün su vermeyin."
+      repot: "Acele etmeyin. Kökler alttaki delikten çıkınca bir boy büyük saksıya geçin. Bir anda büyük saksıya almayın. Geniş toprakta su uzun kalır ve küçük kök çürür. Yeni saksıda da drenaj deliği olsun. Taşıdıktan sonra birkaç gün su vermeyin."
     },
     order: {
       kicker: "06  —  Sipariş",
@@ -258,11 +253,11 @@ window.COPY = {
     meta: {
       home: {
         title: "Aloe Vera Planter Set — Aslana Intelligence",
-        desc: "One aloe vera in a 7 or 9 cm planter, 400 TL. Booklet, recipes, and care in Turkish and English."
+        desc: "One aloe vera in a 7 cm planter, 400 TL. Booklet, recipes, and care in Turkish and English."
       },
       shop: {
         title: "Shop — Aloe Vera Planter Set",
-        desc: "A small aloe set. Choose a 7 cm or 9 cm planter, one plant, 400 TL, and the booklet language."
+        desc: "A small aloe set. One plant in a 7 cm planter, 400 TL, and a booklet language you choose."
       },
       booklet: {
         title: "Booklet — Aloe vera",
@@ -274,7 +269,7 @@ window.COPY = {
       },
       care: {
         title: "Care — a small aloe vera",
-        desc: "Water, light, a city note, and a first-week list for a 7 or 9 cm planter."
+        desc: "Water, light, a city note, and a first-week list for a 7 cm planter."
       },
       order: {
         title: "Cart and order — Aloe Vera Planter Set",
@@ -296,16 +291,16 @@ window.COPY = {
       caution: "Caution",
       steps: "Steps"
     },
-    smallCallout: "This set is one young plant in a 7 or 9 cm planter. It needs to grow before you cut a leaf.",
+    smallCallout: "This set is one young plant in a 7 cm planter. It needs to grow before you cut a leaf.",
     home: {
       kicker: "01  —  The set",
       h1: "A small planter. One aloe vera.",
-      lede: "A young plant in a 7 or 9 centimetre ceramic pot, with a booklet in two languages. A plant this size is not for cutting. It settles in first. The booklet, the care guide, and the recipes stay useful while it grows.",
+      lede: "A young plant in a 7 centimetre ceramic pot, with a booklet in two languages. A plant this size is not for cutting. It settles in first. The booklet, the care guide, and the recipes stay useful while it grows.",
       ctaShop: "See the set",
       ctaBook: "Read the booklet",
-      priceNote: "One plant. The 7 cm and 9 cm planters cost the same.",
+      priceNote: "One plant. The planter is 7 cm.",
       facts: [
-        { t: "One price", d: "7 cm and 9 cm are the same. Each planter holds one plant." },
+        { t: "7 cm", d: "Each planter holds one young plant." },
         { t: "It grows first", d: "Do not take a leaf at this size. Cutting is explained once an outer leaf is thick." },
         { t: "Two languages", d: "Choose the booklet in Turkish, English, or both." }
       ],
@@ -313,7 +308,7 @@ window.COPY = {
       boxLede: "Not a padded gift pile. A small plant, the right pot, and a short book that shows you how to live with it.",
       box: [
         { t: "One young aloe vera", d: "Rooted, with short leaves. In Turkey it is also called sarısabır." },
-        { t: "A 7 or 9 cm planter", d: "Matte ceramic, with a drainage hole, a saucer, and succulent soil." },
+        { t: "A 7 cm planter", d: "Matte ceramic, with a drainage hole, a saucer, and succulent soil." },
         { t: "A booklet", d: "The printed text matches the Booklet page on this site." }
       ],
       useTitle: "What it is for at home",
@@ -333,12 +328,7 @@ window.COPY = {
     },
     shop: {
       kicker: "02  —  Shop",
-      lede: "Each order is one planter and one plant. Choose the size, then the booklet language.",
-      sizeTitle: "Planter size",
-      size7: "7 cm",
-      size7d: "The smallest start. One young plant.",
-      size9: "9 cm",
-      size9d: "A little wider. Still one young plant.",
+      lede: "Each order is one plant in a 7 cm planter. Choose the booklet language.",
       bookTitle: "Booklet",
       qty: "Quantity",
       add: "Add to cart",
@@ -346,16 +336,16 @@ window.COPY = {
       includesTitle: "Included in the price",
       includes: [
         "One young aloe vera",
-        "A ceramic planter in the size you choose, with drainage and a saucer",
+        "A 7 cm ceramic planter with drainage and a saucer",
         "Succulent soil",
         "A printed booklet in the language you choose",
         "The care guide and recipes on this site"
       ],
       ship: "Shipping is not included. Payment and shipping are confirmed in the order message.",
-      photo: "The photograph stands in for the small set. The planter is 7 or 9 cm.",
+      photo: "The photograph stands in for the small set. The planter is 7 cm.",
       faqTitle: "Short questions",
       faqs: [
-        { q: "Does 9 cm cost more than 7 cm?", a: "No. Both are one young plant at the same price. Only the diameter changes." },
+        { q: "How big is the planter?", a: "7 cm. It holds one young plant." },
         { q: "Can I cut a leaf when it arrives?", a: "No. This size is not a jar of gel. The plant grows at home. Wait for at least 8 firm leaves, one thick outer leaf, and 8 weeks." },
         { q: "How do I pay, and how does it arrive?", a: "The cart prepares an order message. You send it. Payment and shipping are agreed in that conversation. This page does not take a card." },
         { q: "What if a cat or dog lives here?", a: "The ASPCA lists aloe vera as toxic to cats, dogs, and horses. Put the planter where they cannot chew it." },
@@ -413,11 +403,11 @@ window.COPY = {
       readyTitle: "Ready for a leaf?",
       readyLede: "If all three are yes, one outer leaf can be cut. If any is no, the recipes wait.",
       readyYes: "You can cut. Use the harvest steps in the booklet. Then wait at least four weeks.",
-      readyNo: "This plant is not ready. Keep caring for it. A 7 or 9 cm planter often takes months to reach this point.",
+      readyNo: "This plant is not ready. Keep caring for it. This 7 cm planter often takes months to reach this point.",
       ics: "Add a check every three weeks",
       icsDone: "The calendar file downloaded. Water only if the soil is dry.",
       repotTitle: "Moving to a larger pot",
-      repot: "Do not rush. A 7 cm plant moves to 9 cm only when roots come out of the hole. A 9 cm plant can move to about 12 cm the following spring. Do not jump into a large pot. Water sits in the extra soil and small roots rot. The new pot needs a drainage hole too. Do not water for a few days after the move."
+      repot: "Do not rush. When roots come out of the hole, move it up one pot size. Do not jump into a large pot. Water sits in the extra soil and small roots rot. The new pot needs a drainage hole too. Do not water for a few days after the move."
     },
     order: {
       kicker: "06  —  Order",
@@ -482,12 +472,12 @@ window.CHAPTERS = [
     title: { tr: "Kutunun içinde", en: "In the box" },
     paras: {
       tr: [
-        "Bu set küçüktür. Her saksıda bir genç aloe vera vardır. Saksı ya 7 cm ya da 9 cm'dir. İkisinde de bitki sayısı birdir.",
+        "Bu set küçüktür. Her saksıda bir genç aloe vera vardır. Saksı 7 cm'dir.",
         "Kutuda bitki, drenaj delikli seramik saksı, altlık, sukulent toprağı ve seçtiğiniz dilde basılı kitapçık bulunur. Bu sayfa, basılı metnin aynısıdır.",
         "Bu ölçüde yaprak kesilmez. Bitki önce yerine alışır ve büyür. Tarifler, dış yaprak başparmağınızdan kalın olduktan sonra kullanılır."
       ],
       en: [
-        "This set is small. Each planter holds one young aloe vera. The planter is either 7 cm or 9 cm. Both hold a single plant.",
+        "This set is small. Each planter holds one young aloe vera. The planter is 7 cm.",
         "The box contains the plant, a ceramic planter with a drainage hole, a saucer, succulent soil, and a printed booklet in the language you chose. This page is the same text.",
         "Do not cut a leaf at this size. The plant settles and grows first. The recipes are for later, once an outer leaf is thicker than your thumb."
       ]
@@ -500,12 +490,12 @@ window.CHAPTERS = [
       tr: [
         "Botanik adı Aloe vera'dır. Eski metinlerde Aloe barbadensis olarak da geçer. Türkiye'de sarısabır da denir.",
         "Yapraklar etlidir ve kenarları küçük dişlidir. İçte berrak bir jel vardır. Kabuğun hemen altında sarı, acı bir özsu vardır. Bu özsu latekstir ve aloin taşır. Aloin cildi tahriş eder ve güçlü bir müshildir. Bu sette lateks kullanılmaz.",
-        "Bitki aydınlık sever, sık su sevmez. 7–9 cm saksıdaki genç bitki, büyük bir bahçe aloesi gibi sulanırsa çabuk çürür."
+        "Bitki aydınlık sever, sık su sevmez. 7 cm saksıdaki genç bitki, büyük bir bahçe aloesi gibi sulanırsa çabuk çürür."
       ],
       en: [
         "The botanical name is Aloe vera. Older texts also call it Aloe barbadensis. In Turkey it is also called sarısabır.",
         "The leaves are fleshy, with small teeth along the edges. Inside is a clear gel. Just under the skin is a yellow, bitter sap. That sap is latex, and it carries aloin. Aloin irritates skin and is a strong laxative. This set does not use the latex.",
-        "The plant likes light and dislikes frequent water. A young plant in a 7–9 cm pot rots quickly if it is watered like a large garden aloe."
+        "The plant likes light and dislikes frequent water. A young plant in a 7 cm pot rots quickly if it is watered like a large garden aloe."
       ]
     }
   },

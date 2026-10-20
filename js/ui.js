@@ -138,10 +138,9 @@ function readOrderForm() {
 
 function saveShopFromDom() {
   const book = document.querySelector('input[name="booklet"]:checked');
-  const size = document.querySelector('input[name="size"]:checked');
   const qty = document.getElementById("shop-qty");
-  if (!book || !size) return;
-  saveShopChoice({ booklet: book.value, size: size.value, qty: qty ? qty.value : 1 });
+  if (!book) return;
+  saveShopChoice({ booklet: book.value, size: 7, qty: qty ? qty.value : 1 });
 }
 
 function validateForm(form) {
@@ -257,8 +256,8 @@ function downloadIcs() {
   const day = localDay(start);
   const summary = getLang() === "en" ? "Aloe vera: water only if the soil is dry" : "Aloe vera: toprak kuruysa sulayın";
   const description = getLang() === "en"
-    ? "Check a 7 or 9 cm planter. Water only if the soil is dry to the bottom. Empty the saucer."
-    : "7 veya 9 cm saksıyı kontrol edin. Toprak dibine kadar kuruysa sulayın. Altlığı boşaltın.";
+    ? "Check the 7 cm planter. Water only if the soil is dry to the bottom. Empty the saucer."
+    : "7 cm saksıyı kontrol edin. Toprak dibine kadar kuruysa sulayın. Altlığı boşaltın.";
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -324,7 +323,7 @@ function runSelfTest() {
   checks.push(errors.length === 4 ? "errors ok" : "errors " + errors.length);
   saveForm({ name: "Ada Yilmaz", phone: "05551112233", city: "Izmir", district: "Konak", address: "Kisa sokak 12", note: "kapida" });
   const message = buildOrderMessage();
-  checks.push(message.indexOf("7 cm") !== -1 && message.indexOf("9 cm") !== -1 ? "sizes ok" : "sizes missing");
+  checks.push(message.indexOf("7 cm") !== -1 && message.indexOf("9 cm") === -1 ? "sizes ok" : "sizes missing");
   checks.push(message.indexOf("ASL-") !== -1 ? "order ok" : "order missing");
   checks.push(message.indexOf("1.600 TL") !== -1 ? "money ok" : "money " + message.split("\n").filter(function (line) { return line.indexOf("TL") !== -1; }).join(" | "));
   setLang("en");

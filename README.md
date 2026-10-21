@@ -1,6 +1,6 @@
 # CYGNUS · Living Botanicals
 
-A buildless Turkish/English botanical store and private plant journal. The redesign is on `codex/living-aloe-redesign`. It has not been deployed to cygnus.health.
+A buildless Turkish/English beauty concept built around a living aloe, with a store, beauty studio and private plant journal. The site is published at https://cygnus.health. See `BRAND.md` for the owner’s hair and skin beauty focus.
 
 ## Preview and check
 
@@ -15,10 +15,10 @@ Preview: http://127.0.0.1:4173. The server binds to loopback and serves only pub
 
 ## Working features
 
-- Responsive editorial homepage, product page and grower story.
+- Responsive beauty-led homepage, product page and grower story, with dedicated hair and skin-care concept paths.
 - Turkish/English interface and booklet selection; the existing ₺400 price remains configurable.
 - Cart quantities, saved choices and message-based ordering. A prepared message is not a confirmed order.
-- Searchable, filterable, saved plant-care rituals. Six activities that do not require harvesting aloe.
+- Searchable, filterable studio with six clearly labelled hair/skin beauty concepts and six activities that do not require harvesting aloe. Cosmetic concepts do not publish application recipes or efficacy claims.
 - First-week care checklist, city/season notes, growth observations, and calendar-file downloads for soil checks.
 - Private passport: plant name, adoption date, location note, dated entries, observed leaf counts, photo compression/preview, and milestone badges tied to recorded actions.
 - JSON export and validated, explicitly confirmed restore. Up to 120 entries and 12 photos per passport. Photos are resized locally; they are not uploaded.
@@ -49,4 +49,4 @@ Legacy `aslana-*` browser storage keys are deliberately retained so existing car
 
 ## Verification
 
-Eleven behavior checks cover bilingual routes, cart math, order validation, ritual filters, safety locks, passport persistence, HTML escaping, malformed backups and unavailable storage. Browser checks cover language switching, growth stages, profile and entry persistence, photo preparation/saving, menu navigation, mobile layout and order preparation. PDF pages were rendered with Poppler and visually inspected. Public community sharing, automated notifications and payment processing are intentionally not represented as implemented.
+Twelve behavior checks cover bilingual routes, cart math, order validation, ritual and beauty filters, concept safety locks, passport persistence, HTML escaping, malformed backups and unavailable storage. Browser checks cover language switching, growth stages, profile and entry persistence, photo preparation/saving, menu navigation, mobile layout and order preparation. PDF pages were rendered with Poppler and visually inspected. Public community sharing, automated notifications and payment processing are intentionally not represented as implemented.

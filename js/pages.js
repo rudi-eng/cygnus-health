@@ -20,6 +20,9 @@ function callout(text) {
 }
 
 function renderPage(route) {
+  if (route.page === "passport") return renderPassport();
+  if (route.page === "greenhouse") return renderGreenhouse();
+  if (route.page === "story") return renderStory();
   if (route.page === "shop") return renderShop();
   if (route.page === "booklet") return renderBooklet(route);
   if (route.page === "recipes") return renderRecipes(route);
@@ -28,49 +31,12 @@ function renderPage(route) {
   return renderHome();
 }
 
-function renderHome() {
-  const h = ui().home;
-  const price = formatTL(window.ASLANA_CONFIG.priceTL);
-  const facts = h.facts.map(function (fact, index) {
-    const lead = index === 0 ? "<b>" + esc(price) + "</b>" : "<b>0" + (index + 1) + "</b>";
-    return '<article class="fact">' + lead + "<h3>" + esc(fact.t) + "</h3><p>" + esc(fact.d) + "</p></article>";
-  }).join("");
-  const box = h.box.map(function (item, index) {
-    const glyph = ["leaf", "drop", "book"][index] || "leaf";
-    return '<article class="card">' + icon(glyph) + "<h3>" + esc(item.t) + "</h3><p>" + esc(item.d) + "</p></article>";
-  }).join("");
-  const uses = h.uses.map(function (item) {
-    return '<article class="card quiet"><h3>' + esc(item.t) + "</h3><p>" + esc(item.d) + "</p></article>";
-  }).join("");
-  const paths = h.paths.map(function (item, index) {
-    return '<a class="path" href="' + item.href + '"><span>0' + (index + 1) + "</span><h3>" + esc(item.h) + "</h3><p>" + esc(item.d) + "</p></a>";
-  }).join("");
-  return ''
-    + '<section class="hero wrap">'
-    + '<div class="hero-copy">'
-    + '<p class="kicker">' + esc(h.kicker) + "</p>"
-    + "<h1>" + esc(h.h1) + "</h1>"
-    + '<p class="lede">' + esc(h.lede) + "</p>"
-    + '<div class="hero-actions"><a class="btn" href="#/shop">' + esc(h.ctaShop) + '</a><a class="btn ghost" href="#/booklet">' + esc(h.ctaBook) + "</a></div>"
-    + '<p class="price-line"><strong>' + esc(price) + "</strong><span>" + esc(h.priceNote) + "</span></p>"
-    + "</div>"
-    + '<figure class="hero-fig"><img src="assets/hero.jpg" alt="' + esc(ui().alts.hero) + '" width="900" height="1200"><figcaption>' + esc(ui().shop.photo) + "</figcaption></figure>"
-    + "</section>"
-    + '<section class="band wrap">' + facts + "</section>"
-    + '<section class="wrap block"><p class="kicker">01</p><h2>' + esc(h.boxTitle) + '</h2><p class="lede">' + esc(h.boxLede) + '</p><div class="cards three">' + box + "</div></section>"
-    + '<section class="wrap block"><h2>' + esc(h.useTitle) + '</h2><div class="cards three">' + uses + "</div></section>"
-    + '<section class="wrap block"><h2>' + esc(h.pathTitle) + '</h2><div class="paths">' + paths + "</div></section>"
-    + '<section class="wrap block">' + callout(h.safetyTitle + " " + h.safety) + "</section>";
-}
-
 function renderShop() {
   const s = ui().shop;
   const choice = getShopChoice();
-  const shot = window.__shot || "assets/hero.jpg";
+  const shot = window.__shot || "assets/living-aloe-concept.jpg";
   const shots = [
-    ["assets/hero.jpg", ui().alts.hero],
-    ["assets/booklet.jpg", ui().alts.booklet],
-    ["assets/window.jpg", ui().alts.window]
+    ["assets/living-aloe-concept.jpg", ui().alts.hero]
   ];
   const thumbs = shots.map(function (item) {
     const on = item[0] === shot ? " on" : "";
@@ -123,8 +89,8 @@ function renderBooklet(route) {
     return '<article class="chapter" id="ch-' + ch.id + '"><p class="kicker">0' + (index + 1) + "</p><h2>" + esc(tx(ch.title)) + "</h2>" + paras(txList(ch.paras)) + (steps.length ? ol(steps) : "") + fig + link + sources + "</article>";
   }).join("");
   return ''
-    + '<section class="wrap page-head"><p class="kicker">' + esc(b.kicker) + "</p><h1>" + esc(ui().nav.booklet) + '</h1><p class="lede">' + esc(b.lede) + "</p>" + callout(ui().smallCallout) + '<aside class="disclaimer">' + esc(b.disclaimer) + "</aside></section>"
-    + '<div class="book wrap"><nav class="ch-nav no-print">' + nav + "</nav><div>" + chapters + '<p class="fine">' + esc(ui().common.updated) + "</p></div></div>";
+    + '<section class="wrap page-head"><p class="kicker">' + esc(b.kicker) + "</p><h1>" + esc(ui().nav.booklet) + '</h1><p class="lede">' + esc(b.lede) + '</p><div class="hero-actions no-print"><button class="btn" type="button" data-action="print">' + esc(getLang()==='en'?'Print / save as PDF':'Yazdır / PDF olarak kaydet') + '</button><a class="btn ghost" href="#/passport">' + esc(getLang()==='en'?'Open my passport':'Pasaportumu aç') + '</a></div><aside class="disclaimer">' + esc(b.disclaimer) + "</aside></section>"
+    + '<section class="wrap no-print"><div class="print-downloads"><a class="btn ghost" href="output/pdf/cygnus-botanical-journal-tr-en.pdf" download>'+esc(say('İki dilli günlüğü indir · PDF','Download the bilingual journal · PDF'))+'</a><a class="editorial-link" href="output/pdf/cygnus-adoption-card-tr-en.pdf" download>'+esc(say('Sahiplenme kartı · PDF','Adoption card · PDF'))+'</a><img src="assets/passport-qr.svg" alt="'+esc(say('cygnus.health bitki pasaportunu açan QR kod','QR code for the cygnus.health plant passport'))+'" width="90" height="90"><p class="fine">cygnus.health/#/passport</p></div></section><div class="book wrap"><nav class="ch-nav no-print">' + nav + "</nav><div>" + chapters + '<p class="fine">' + esc(ui().common.updated) + "</p></div></div>";
 }
 
 function renderSources() {
@@ -165,17 +131,11 @@ function renderRecipes(route) {
     const on = getRecipeFilter() === cat ? ' aria-pressed="true"' : ' aria-pressed="false"';
     return '<button type="button" data-action="filter" data-filter="' + cat + '"' + on + ">" + esc(catLabel(cat)) + "</button>";
   }).join("");
-  const gels = [1, 3, 6].map(function (amount) {
-    const on = getGelLimit() === amount ? ' aria-pressed="true"' : ' aria-pressed="false"';
-    const label = amount === 1 ? r.gel1 : amount === 3 ? r.gel3 : r.gel6;
-    return '<button type="button" data-action="gel" data-gel="' + amount + '"' + on + ">" + esc(label) + "</button>";
-  }).join("");
-  const hidden = getGelLimit() < 6 ? '<p class="fine">' + esc(r.hidden) + "</p>" : "";
   return ''
     + '<section class="wrap page-head"><p class="kicker">' + esc(r.kicker) + "</p><h1>" + esc(ui().nav.recipes) + '</h1><p class="lede">' + esc(r.lede) + "</p>" + callout(ui().smallCallout) + "</section>"
     + '<section class="wrap no-print"><div class="filters" role="toolbar">' + filters + "</div>"
     + '<label class="search"><span>' + esc(r.search) + '</span><input id="recipe-search" type="search" value="' + esc(getSearch()) + '"></label>'
-    + "<h2>" + esc(r.gelTitle) + '</h2><div class="filters">' + gels + "</div><p class=\"fine\">" + esc(r.gelHelp) + "</p>" + hidden + "</section>"
+    + '</section><section class="wrap"><aside class="studio-lock"><span aria-hidden="true">◇</span><div><h3>' + esc(getLang()==='en'?'Growing first. Formulating later.':'Önce büyütelim. Tarifler sonra.') + '</h3><p>' + esc(getLang()==='en'?'The cosmetic recipe collection is awaiting species confirmation and safety review. These six rituals need no harvested aloe.':'Kozmetik tarif koleksiyonu tür doğrulaması ve güvenlik incelemesi bekliyor. Bu altı ritüel için aloe yaprağı kesmeniz gerekmez.') + '</p></div></aside></section>'
     + '<section class="wrap cards recipes" id="recipe-grid">' + recipeCards() + "</section>";
 }
 

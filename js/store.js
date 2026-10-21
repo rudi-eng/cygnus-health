@@ -186,7 +186,7 @@ function makeOrderNo() {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let tail = "";
   for (let i = 0; i < 4; i += 1) tail += alphabet[Math.floor(Math.random() * alphabet.length)];
-  return "ASL-" + String(d.getFullYear()).slice(2) + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + tail;
+  return "CYG-" + String(d.getFullYear()).slice(2) + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + tail;
 }
 
 function ensureOrderNo() {

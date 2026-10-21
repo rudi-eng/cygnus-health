@@ -49,7 +49,7 @@ window.COPY = {
         "desc": "Türkiye’de yetişen genç bir aloe, 7 cm plastik saksı, botanik günlük ve kişisel bitki pasaportu. Biraz bitki. Biraz sihir."
       },
       "recipes": {
-        "title": "Saç & cilt güzellik stüdyosu — CYGNUS",
+        "title": "Ritüel stüdyosu — CYGNUS",
         "desc": "Türkiye’de yetişen genç bir aloe, 7 cm plastik saksı, botanik günlük ve kişisel bitki pasaportu. Biraz bitki. Biraz sihir."
       },
       "care": {
@@ -76,14 +76,14 @@ window.COPY = {
     "nav": {
       "shop": "Yaşayan set",
       "booklet": "Botanik günlük",
-      "recipes": "Saç & cilt",
+      "recipes": "Ritüel stüdyosu",
       "care": "Bakım rehberi"
     },
     "cats": {
       "all": "Tümü",
       "method": "Gözlem",
-      "skin": "Cilt bakımı",
-      "hair": "Saç bakımı",
+      "skin": "Günlük",
+      "hair": "Yaratıcılık",
       "home": "Ev",
       "saved": "Kayıtlı"
     },
@@ -98,7 +98,7 @@ window.COPY = {
       "cart": "Sepet",
       "sources": "Kaynaklar",
       "updated": "Bakım ve güvenlik kaynakları: 21 Ekim 2026.",
-      "back": "Güzellik stüdyosuna dön",
+      "back": "Ritüellere dön",
       "print": "Yazdır",
       "minutes": "dakika",
       "caution": "Dikkat",
@@ -107,7 +107,7 @@ window.COPY = {
     "smallCallout": "Küçük bir başlangıç: drenajlı 7 cm plastik üretim saksısında genç bir aloe. Önce büyütelim; bu bitki yaprak hasadı için hazır değil.",
     "shop": {
       "kicker": "YAŞAYAN BOTANİK KOLEKSİYONU · NO. 01",
-      "lede": "Yaşayan bir bitkiyle başlayan güzellik deneyimi. Türkiye’de yetişen genç bir aloe, botanik günlük ve saç ile cilt bakımı fikirlerini keşfedebileceğiniz dijital güzellik stüdyosu. Kozmetik tarifler henüz inceleme aşamasında.",
+      "lede": "Bir bitkiden fazlası: evinizde yavaşça büyüyen küçük bir ritüel. Türkiye’de yetişen genç bir aloe, botanik günlük ve size ait bir bitki pasaportu.",
       "bookTitle": "Kitapçık",
       "qty": "Adet",
       "add": "Sepete ekle",
@@ -160,8 +160,8 @@ window.COPY = {
       "disclaimer": "Bu rehber bitki bakımı ve genel eğitim içindir. Bitkinin türü ve kozmetik uygunluğu doğrulanana kadar yaprak kesmeyin, cilde uygulamayın ve tüketmeyin."
     },
     "recipesPage": {
-      "kicker": "GÜZELLİK STÜDYOSU / SAÇ & CİLT",
-      "lede": "Güzellik yolculuğunuz için saç ve cilt bakımı fikirleri. Beğendiğiniz konseptleri kaydedin; şu anda uygulama tarifi değil, geliştirme fikirleridir. Kozmetik kullanım adımları tür doğrulaması ve güvenlik incelemesinden sonra değerlendirilecek.",
+      "kicker": "RİTÜEL STÜDYOSU",
+      "lede": "Küçük, sakin ritüeller. Bitkinize dokunmadan da başlayabilirsiniz. Cilde uygulanan aloe tarifleri, tür doğrulaması ve güvenlik incelemesi tamamlanana kadar kapalıdır.",
       "search": "Bir ritüel ara",
       "gelTitle": "Elinizdeki jel",
       "gel1": "1 çay kaşığı",
@@ -293,7 +293,7 @@ window.COPY = {
         "desc": "A young aloe grown in Türkiye, a 7 cm plastic nursery pot, a botanical journal and your own plant passport. A little plant. A little magic."
       },
       "recipes": {
-        "title": "Hair & skin beauty studio — CYGNUS",
+        "title": "Ritual studio — CYGNUS",
         "desc": "A young aloe grown in Türkiye, a 7 cm plastic nursery pot, a botanical journal and your own plant passport. A little plant. A little magic."
       },
       "care": {
@@ -320,14 +320,14 @@ window.COPY = {
     "nav": {
       "shop": "The living kit",
       "booklet": "Botanical journal",
-      "recipes": "Hair & skin",
+      "recipes": "Ritual studio",
       "care": "Care guide"
     },
     "cats": {
       "all": "All rituals",
       "method": "Observe",
-      "skin": "Skin care",
-      "hair": "Hair care",
+      "skin": "Journal",
+      "hair": "Create",
       "home": "At home",
       "saved": "Saved"
     },
@@ -342,7 +342,7 @@ window.COPY = {
       "cart": "Cart",
       "sources": "Sources",
       "updated": "Care and safety sources checked: 21 October 2026.",
-      "back": "Back to the beauty studio",
+      "back": "Back to the rituals",
       "print": "Print",
       "minutes": "minutes",
       "caution": "Caution",
@@ -351,7 +351,7 @@ window.COPY = {
     "smallCallout": "A little beginning: a young aloe in a 7 cm plastic nursery pot with drainage. Let it grow first; this plant is not ready for leaf harvesting.",
     "shop": {
       "kicker": "THE LIVING BOTANICAL COLLECTION · NO. 01",
-      "lede": "A beauty experience that begins with a living plant. A young aloe grown in Türkiye, a botanical journal, and a digital beauty studio to explore hair and skin-care ideas. Cosmetic recipes are still under review.",
+      "lede": "More than a little plant: a quiet ritual that grows with you. A young aloe grown in Türkiye, a botanical journal, and a plant passport of your own.",
       "bookTitle": "Booklet",
       "qty": "Quantity",
       "add": "Add to cart",
@@ -404,8 +404,8 @@ window.COPY = {
       "disclaimer": "For plant care and general education. Do not harvest, apply to skin or consume this plant while its species and suitability for cosmetic use remain unconfirmed."
     },
     "recipesPage": {
-      "kicker": "THE BEAUTY STUDIO / HAIR & SKIN",
-      "lede": "Hair and skin-care ideas for your beauty journey. Save the concepts you love; these are development ideas, not instructions to try. Cosmetic-use guidance will be considered after species confirmation and safety review.",
+      "kicker": "THE RITUAL STUDIO",
+      "lede": "Small rituals, slower days. Begin without taking a leaf. Topical aloe recipes remain locked until species identification and safety review are complete.",
       "search": "Find a little ritual",
       "gelTitle": "Gel you have",
       "gel1": "1 teaspoon",

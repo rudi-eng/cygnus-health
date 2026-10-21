@@ -119,14 +119,13 @@ function recipeCards() {
   if (!list.length) return '<p class="empty">' + esc(ui().recipesPage.empty) + "</p>";
   return list.map(function (recipe) {
     const saved = isFav(recipe.id);
-    const status = recipe.concept ? say('Konsept · tarif incelemede', 'Concept · recipe under review') : recipe.minutes + ' ' + ui().common.minutes;
-    return '<article class="recipe-card'+(recipe.concept?' beauty-concept-card':'')+'"><a href="#/recipes/' + recipe.id + '"><p class="kicker">' + esc(catLabel(recipe.cat)) + ' · ' + esc(status) + "</p><h3>" + esc(tx(recipe.title)) + "</h3><p>" + esc(tx(recipe.summary)) + "</p></a><button type=\"button\" data-action=\"fav\" data-id=\"" + recipe.id + "\" aria-pressed=\"" + saved + "\">" + esc(saved ? ui().recipesPage.favOn : ui().recipesPage.fav) + "</button></article>";
+    return '<article class="recipe-card"><a href="#/recipes/' + recipe.id + '"><p class="kicker">' + esc(catLabel(recipe.cat)) + " · " + recipe.minutes + " " + esc(ui().common.minutes) + "</p><h3>" + esc(tx(recipe.title)) + "</h3><p>" + esc(tx(recipe.summary)) + "</p></a><button type=\"button\" data-action=\"fav\" data-id=\"" + recipe.id + "\" aria-pressed=\"" + saved + "\">" + esc(saved ? ui().recipesPage.favOn : ui().recipesPage.fav) + "</button></article>";
   }).join("");
 }
 
 function renderRecipes(route) {
   const recipe = route.id ? window.RECIPES.find(function (item) { return item.id === route.id; }) : null;
-  if (recipe) return recipe.concept ? renderBeautyConcept(recipe) : renderRecipeDetail(recipe);
+  if (recipe) return renderRecipeDetail(recipe);
   const r = ui().recipesPage;
   const filters = ["all", "method", "skin", "hair", "home", "saved"].map(function (cat) {
     const on = getRecipeFilter() === cat ? ' aria-pressed="true"' : ' aria-pressed="false"';
@@ -136,12 +135,8 @@ function renderRecipes(route) {
     + '<section class="wrap page-head"><p class="kicker">' + esc(r.kicker) + "</p><h1>" + esc(ui().nav.recipes) + '</h1><p class="lede">' + esc(r.lede) + "</p>" + callout(ui().smallCallout) + "</section>"
     + '<section class="wrap no-print"><div class="filters" role="toolbar">' + filters + "</div>"
     + '<label class="search"><span>' + esc(r.search) + '</span><input id="recipe-search" type="search" value="' + esc(getSearch()) + '"></label>'
-    + '</section><section class="wrap"><aside class="studio-lock"><span aria-hidden="true">◇</span><div><h3>' + esc(say('Güzellik fikirleri, özenle geliştiriliyor.','Beauty ideas, developed with care.')) + '</h3><p>' + esc(say('Altı saç ve cilt bakım konsepti; tarifleri tür doğrulaması ve güvenlik incelemesi bekliyor. Ev ve gözlem kategorilerindeki altı ritüeli bitkinizden yaprak kesmeden keşfedebilirsiniz.','Six hair and skin-care concepts, with recipes awaiting species confirmation and safety review. The six home and observation rituals can be explored without harvesting your plant.')) + '</p></div></aside></section>'
+    + '</section><section class="wrap"><aside class="studio-lock"><span aria-hidden="true">◇</span><div><h3>' + esc(getLang()==='en'?'Growing first. Formulating later.':'Önce büyütelim. Tarifler sonra.') + '</h3><p>' + esc(getLang()==='en'?'The cosmetic recipe collection is awaiting species confirmation and safety review. These six rituals need no harvested aloe.':'Kozmetik tarif koleksiyonu tür doğrulaması ve güvenlik incelemesi bekliyor. Bu altı ritüel için aloe yaprağı kesmeniz gerekmez.') + '</p></div></aside></section>'
     + '<section class="wrap cards recipes" id="recipe-grid">' + recipeCards() + "</section>";
-}
-
-function renderBeautyConcept(recipe) {
-  return '<article class="wrap recipe-detail beauty-concept-detail"><a class="text-link" href="#/recipes">'+esc(ui().common.back)+'</a><p class="kicker">'+esc(catLabel(recipe.cat))+' / '+esc(say('GÜZELLİK KONSEPTİ','BEAUTY CONCEPT'))+'</p><h1>'+esc(tx(recipe.title))+'</h1><p class="lede">'+esc(tx(recipe.summary))+'</p><aside class="disclaimer"><h2>'+esc(say('Fikir aşamasında','At the concept stage'))+'</h2><p>'+esc(say('Bu bir uygulama tarifi değildir. Malzeme miktarları, hazırlama, temas süresi ve saklama talimatları yayımlanmıyor. Bitkinin kesin türü ile kozmetik uygunluğu doğrulanmalı; formül ve kullanım bir uzman tarafından değerlendirilmelidir.','This is an idea, not a recipe to try. Ingredient quantities, preparation, contact times and storage instructions are not published. The plant’s identity and cosmetic suitability must be confirmed, and formulation and use professionally reviewed.'))+'</p></aside><p>'+esc(say('Bu fikir şu anda setin içinde hazır bir kozmetik ürün olarak bulunmaz. Beğendiğiniz konsepti güzellik ilham listenize kaydedebilirsiniz.','No prepared cosmetic matching this idea is currently included in the kit. Save the concept to your beauty inspiration list if you love the direction.'))+'</p><button type="button" class="btn ghost" data-action="fav" data-id="'+recipe.id+'" aria-pressed="'+isFav(recipe.id)+'">'+esc(isFav(recipe.id)?ui().recipesPage.favOn:ui().recipesPage.fav)+'</button> <a class="editorial-link" href="#/shop">'+esc(say('Yaşayan seti keşfet','Explore the living kit'))+' ↗</a></article>';
 }
 
 function renderRecipeDetail(recipe) {

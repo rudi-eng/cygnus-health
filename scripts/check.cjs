@@ -29,18 +29,9 @@ check('all nine pages and ritual details render in both languages',()=>{
   }
 });
 check('topical recipes and unsafe storage guidance are not published',()=>{
-  assert.equal(context.RECIPES.filter(r=>!r.concept).length,6);assert.ok(context.RECIPES.every(r=>r.gelTsp===0));
+  assert.equal(context.RECIPES.length,6);assert.ok(context.RECIPES.every(r=>r.gelTsp===0));
   assert.ok(!/7 days|3 days|7 gün|3 gün|eight weeks|8 hafta/.test(JSON.stringify(context.CHAPTERS)));
   assert.ok(context.renderRecipes({id:''}).includes('species confirmation'));
-});
-check('hair and skin filters contain concepts, without publishing application steps',()=>{
-  const concepts=context.RECIPES.filter(r=>r.concept);assert.equal(concepts.length,6);
-  for(const cat of ['hair','skin']){
-    context.setRecipeFilter(cat);const list=context.visibleRecipes();assert.equal(list.length,3);assert.ok(list.every(r=>r.concept));
-    for(const recipe of list){const html=context.renderRecipes({id:recipe.id});assert.ok(html.includes('not a recipe to try'));assert.ok(!html.includes('<ol>'));assert.ok(!html.includes('undefined'));}
-  }
-  context.setRecipeFilter('all');
-  assert.ok(context.renderHome().includes('Hair &amp; skin ideas'));assert.ok(context.renderHome().includes('beauty-editorial'));
 });
 check('recipe search and saved filtering work',()=>{
   context.setSearch('portrait');context.setRecipeFilter('all');assert.equal(context.visibleRecipes().length,1);

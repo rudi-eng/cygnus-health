@@ -31,7 +31,6 @@ function renderSkip() {
 function navLinks(route) {
   const items = [
     ["shop", "#/shop", ui().nav.shop],
-    ["recipes", "#/recipes", ui().nav.recipes],
     ["booklet", "#/booklet", ui().nav.booklet],
     ["care", "#/care", ui().nav.care],
     ["story", "#/story", say("Hikâyemiz", "Our story")]
@@ -56,13 +55,13 @@ function renderHeader(route) {
     + '<a class="cart-link" href="#/order" aria-label="' + esc(ui().common.cart) + " " + cartCount() + '"><span>' + esc(ui().common.cart) + "</span><b>" + cartCount() + "</b></a>"
     + '<button type="button" class="menu-btn" data-action="menu" aria-expanded="false" aria-controls="site-menu"><span class="menu-bars" aria-hidden="true"></span><span class="sr-only">' + esc(ui().common.menu) + "</span></button>"
     + "</div></div>"
-    + '<div class="mobile-nav" id="site-menu" hidden><div class="wrap">' + navLinks(route) + '<a href="#/greenhouse">'+say('Sera','The greenhouse')+'</a><a href="#/passport">'+say('Bitki pasaportum','My plant passport')+'</a></div></div></header>';
+    + '<div class="mobile-nav" id="site-menu" hidden><div class="wrap">' + navLinks(route) + '<a href="#/recipes">'+esc(ui().nav.recipes)+'</a><a href="#/greenhouse">'+say('Sera','The greenhouse')+'</a><a href="#/passport">'+say('Bitki pasaportum','My plant passport')+'</a></div></div></header>';
 }
 
 function renderFooter() {
   const f = ui().footer;
   return '<footer class="site-foot"><div class="wrap foot-top">'
-    + "<div><p>" + esc(f.blurb) + "</p><nav>" + navLinks(parseRoute()) + '<a href="#/greenhouse">'+say('Sera','Greenhouse')+'</a><a href="#/passport">'+say('Pasaportum','My passport')+'</a></nav></div>'
+    + "<div><p>" + esc(f.blurb) + "</p><nav>" + navLinks(parseRoute()) + '<a href="#/recipes">'+esc(ui().nav.recipes)+'</a><a href="#/greenhouse">'+say('Sera','Greenhouse')+'</a><a href="#/passport">'+say('Pasaportum','My passport')+'</a></nav></div>'
     + "<div><p>" + esc(f.medical) + "</p><p>" + esc(f.pets) + "</p><p class=\"fine\">" + esc(f.year) + "</p></div>"
     + "</div>"
     + '<div class="wordmark wrap"><p>' + esc(f.productOf) + "</p>" + leafSvg()

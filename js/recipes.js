@@ -1,4 +1,4 @@
-// Beauty concepts lead the studio. Topical instructions stay unpublished.
+// Plant-safe rituals. Topical recipes remain unavailable pending review.
 window.RECIPES = [
   {
     id:'window-pause',cat:'home',minutes:3,gelTsp:0,
@@ -25,7 +25,7 @@ window.RECIPES = [
     caution:{tr:'Kontrol hatırlatıcısı sabit sulama takvimi değildir.',en:'A check reminder is not a fixed watering schedule.'}
   },
   {
-    id:'leaf-sketch',cat:'home',minutes:10,gelTsp:0,
+    id:'leaf-sketch',cat:'hair',minutes:10,gelTsp:0,
     title:{tr:'Bir yaprağın çizgileri',en:'Lines of a leaf'},
     summary:{tr:'Benekler, kenarlar ve yalnızca sizin fark ettiğiniz şekiller.',en:'Speckles, edges, and shapes only you notice.'},
     gel:{tr:'Kâğıt ve kalem',en:'Paper and a pencil'},
@@ -33,7 +33,7 @@ window.RECIPES = [
     caution:{tr:'Dikenli kenarlara dikkat edin. Çizim için yaprak kesmeyin.',en:'Mind the pointed edges. Do not cut a leaf for your drawing.'}
   },
   {
-    id:'monthly-letter',cat:'home',minutes:8,gelTsp:0,
+    id:'monthly-letter',cat:'skin',minutes:8,gelTsp:0,
     title:{tr:'Gelecek aya bir mektup',en:'A letter to next month'},
     summary:{tr:'Bugünün küçük değişikliklerini yarına saklayın.',en:'Keep today’s little changes for tomorrow.'},
     gel:{tr:'Botanik günlüğünüz',en:'Your botanical journal'},
@@ -49,13 +49,3 @@ window.RECIPES = [
     caution:{tr:'Bitkiyi çocukların ve evcil hayvanların ulaşamayacağı yerde tutun.',en:'Keep the plant out of reach of children and pets.'}
   }
 ];
-
-const beautyConcepts = [
-  {id:'pre-wash-aloe-mask',cat:'hair',title:{tr:'Yıkama öncesi aloe saç maskesi',en:'The pre-wash aloe hair mask'},summary:{tr:'Yıkama gününü özel bir güzellik anına dönüştüren, durulanan saç maskesi fikri.',en:'A rinse-out mask idea that turns wash day into a little beauty ritual.'}},
-  {id:'aloe-hair-conditioner',cat:'hair',title:{tr:'Duşta aloe saç bakım ritüeli',en:'The aloe shower hair ritual'},summary:{tr:'Saç boyları için duş rutinine eşlik edecek aloe temalı bir bakım konsepti.',en:'An aloe-inspired conditioner concept for the lengths of the hair, as part of a shower routine.'}},
-  {id:'aloe-curl-styling',cat:'hair',title:{tr:'Aloe ile bukle şekillendirme',en:'The aloe curl-styling concept'},summary:{tr:'Bukle rutini için aloe temalı bir şekillendirici fikri. Formül ve performans henüz değerlendirilmedi.',en:'An aloe-inspired styling idea for a curl routine. Formulation and performance have not been assessed.'}},
-  {id:'aloe-face-mask',cat:'skin',title:{tr:'Küçük bir aloe yüz maskesi anı',en:'A little aloe face-mask moment'},summary:{tr:'Akşam bakımına eşlik edecek tek kullanımlık, durulanan maske fikri.',en:'A single-use, rinse-off mask concept to accompany an evening beauty ritual.'}},
-  {id:'aloe-hand-care',cat:'skin',title:{tr:'Aloe el bakım molası',en:'The aloe hand-care pause'},summary:{tr:'Gün içinde kendinize ayıracağınız küçük bir el bakım ritüeli fikri.',en:'A hand-care concept for a small moment of beauty in the middle of the day.'}},
-  {id:'aloe-body-care',cat:'skin',title:{tr:'Duş sonrası aloe vücut bakımı',en:'The after-shower aloe body ritual'},summary:{tr:'Duş sonrası rutini tamamlayacak aloe temalı bir vücut bakım konsepti.',en:'An aloe-inspired body-care concept to complete an after-shower routine.'}}
-];
-window.RECIPES = beautyConcepts.map(concept=>({...concept,concept:true,gelTsp:0})).concat(window.RECIPES);

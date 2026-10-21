@@ -1,4 +1,7 @@
 /* CYGNUS — sunlight, paper, and a little room to grow. */
+.footer-credit{border-top:1px solid var(--line);padding-top:12px;padding-bottom:20px;font-size:.75rem;line-height:1.6;color:var(--muted)}
+.footer-credit a{display:inline-block;padding:8px 0;color:inherit;font-size:inherit;text-decoration:underline;text-underline-offset:3px}
+.footer-credit a:hover{color:var(--leaf-2)}
 .print-downloads{display:flex;flex-wrap:wrap;gap:20px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-bottom:20px}.print-downloads .btn{font-size:.74rem}.print-downloads img{margin-left:auto;flex-shrink:0}.print-downloads p{margin:0;font-size:.66rem;overflow-wrap:anywhere}
 :root{--bg:#f5f2e9;--paper:#fbf9f2;--ink:#293c30;--muted:#697064;--leaf:#425a3e;--leaf-2:#263d2a;--sage:#e3e7d8;--sand:#ede8da;--line:#d5d7c9;--max:1320px;--serif:Fraunces,Georgia,serif;--sans:Outfit,'Segoe UI',sans-serif}
 body{font-weight:360;font-size:1rem;line-height:1.65;background:var(--bg)}

@@ -65,7 +65,10 @@ function renderFooter() {
     + "<div><p>" + esc(f.medical) + "</p><p>" + esc(f.pets) + "</p><p class=\"fine\">" + esc(f.year) + "</p></div>"
     + "</div>"
     + '<div class="wordmark wrap"><p>' + esc(f.productOf) + "</p>" + leafSvg()
-    + "<strong>CYGNUS</strong><em>LIVING BOTANICALS</em></div></footer>";
+    + "<strong>CYGNUS</strong><em>LIVING BOTANICALS</em></div>"
+    + '<div class="wrap footer-credit">' + say('Bir ', 'An ')
+    + '<a href="https://aslanaintelligence.com/">Aslana Intelligence</a>'
+    + say(' projesi', ' project') + '</div></footer>';
 }
 
 function injectLd() {

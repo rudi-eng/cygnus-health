@@ -5,8 +5,10 @@
    Leave it empty until the real order number is ready.
    Customers can still copy the order text.
 */
-window.ASLANA_CONFIG = {
+window.CYGNUS_CONFIG = {
   priceTL: 400,
   sizes: [7],
   whatsappE164: ""
 };
+// Compatibility for the existing cart and saved customer preferences.
+window.ASLANA_CONFIG = window.CYGNUS_CONFIG;

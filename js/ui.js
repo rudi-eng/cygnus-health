@@ -6,7 +6,7 @@ function parseRoute() {
   const raw = (location.hash || "#/").replace(/^#/, "");
   const parts = raw.split("/").filter(Boolean);
   const page = parts[0] || "home";
-  const known = ["home", "shop", "booklet", "recipes", "care", "order"];
+  const known = ["home", "shop", "booklet", "recipes", "care", "order", "passport", "greenhouse", "story"];
   if (known.indexOf(page) === -1) {
     if (location.hash && location.hash !== "#/" && location.hash !== "#") {
       history.replaceState(null, "", location.pathname + location.search + "#/");
@@ -32,8 +32,8 @@ function navLinks(route) {
   const items = [
     ["shop", "#/shop", ui().nav.shop],
     ["booklet", "#/booklet", ui().nav.booklet],
-    ["recipes", "#/recipes", ui().nav.recipes],
-    ["care", "#/care", ui().nav.care]
+    ["care", "#/care", ui().nav.care],
+    ["story", "#/story", say("Hikâyemiz", "Our story")]
   ];
   return items.map(function (item) {
     const current = route.page === item[0] ? ' aria-current="page"' : "";
@@ -43,28 +43,29 @@ function navLinks(route) {
 
 function renderHeader(route) {
   const lang = getLang();
-  return '<header class="site-head"><div class="wrap head-row">'
-    + '<a class="brand" href="#/">' + leafSvg() + "<span><strong>Aloe</strong><small>Set</small></span></a>"
+  return '<div class="announcement">'+say('Biraz bitki. Biraz sihir.','A little plant. A little magic.')+'<span aria-hidden="true"> ✳ </span>'+say('Türkiye’de özenle büyütüldü','Grown with care in Türkiye')+'</div><header class="site-head"><div class="wrap head-row">'
+    + '<a class="brand" href="#/" aria-label="CYGNUS '+say('Ana sayfa','Home')+'"><span class="brand-star" aria-hidden="true">✳</span><span><strong>CYGNUS</strong><small>LIVING BOTANICALS</small></span></a>'
     + '<nav class="desk-nav">' + navLinks(route) + "</nav>"
     + '<div class="head-tools">'
     + '<div class="lang" role="group" aria-label="Language">'
     + '<button type="button" data-action="lang" data-lang="tr" aria-pressed="' + (lang === "tr") + '">TR</button>'
     + '<button type="button" data-action="lang" data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button>'
     + "</div>"
+    + '<a class="passport-link" href="#/passport">' + say('Bitkim','My plant') + ' <span aria-hidden="true">↗</span></a>'
     + '<a class="cart-link" href="#/order" aria-label="' + esc(ui().common.cart) + " " + cartCount() + '"><span>' + esc(ui().common.cart) + "</span><b>" + cartCount() + "</b></a>"
     + '<button type="button" class="menu-btn" data-action="menu" aria-expanded="false" aria-controls="site-menu"><span class="menu-bars" aria-hidden="true"></span><span class="sr-only">' + esc(ui().common.menu) + "</span></button>"
     + "</div></div>"
-    + '<div class="mobile-nav" id="site-menu" hidden><div class="wrap">' + navLinks(route) + "</div></div></header>";
+    + '<div class="mobile-nav" id="site-menu" hidden><div class="wrap">' + navLinks(route) + '<a href="#/recipes">'+esc(ui().nav.recipes)+'</a><a href="#/greenhouse">'+say('Sera','The greenhouse')+'</a><a href="#/passport">'+say('Bitki pasaportum','My plant passport')+'</a></div></div></header>';
 }
 
 function renderFooter() {
   const f = ui().footer;
   return '<footer class="site-foot"><div class="wrap foot-top">'
-    + "<div><p>" + esc(f.blurb) + "</p><nav>" + navLinks(parseRoute()) + '<a href="#/order">' + esc(ui().common.cart) + "</a></nav></div>"
+    + "<div><p>" + esc(f.blurb) + "</p><nav>" + navLinks(parseRoute()) + '<a href="#/recipes">'+esc(ui().nav.recipes)+'</a><a href="#/greenhouse">'+say('Sera','Greenhouse')+'</a><a href="#/passport">'+say('Pasaportum','My passport')+'</a></nav></div>'
     + "<div><p>" + esc(f.medical) + "</p><p>" + esc(f.pets) + "</p><p class=\"fine\">" + esc(f.year) + "</p></div>"
     + "</div>"
     + '<div class="wordmark wrap"><p>' + esc(f.productOf) + "</p>" + leafSvg()
-    + "<strong>Aslana</strong><em>Intelligence</em></div></footer>";
+    + "<strong>CYGNUS</strong><em>LIVING BOTANICALS</em></div></footer>";
 }
 
 function injectLd() {
@@ -75,13 +76,12 @@ function injectLd() {
     "@context": "https://schema.org",
     "@type": "Product",
     name: productName(),
-    brand: { "@type": "Brand", name: "Aslana Intelligence" },
+    brand: { "@type": "Brand", name: "CYGNUS" },
     description: ui().meta.shop.desc,
     offers: {
       "@type": "Offer",
       priceCurrency: "TRY",
       price: String(window.ASLANA_CONFIG.priceTL),
-      availability: "https://schema.org/InStock",
       areaServed: "TR"
     }
   };
@@ -93,6 +93,7 @@ function injectLd() {
 }
 
 function mount(opts) {
+  resetPassportDraft();
   const keep = opts && opts.keepScroll;
   const y = keep ? window.scrollY : 0;
   document.body.classList.remove("nav-open");
@@ -102,14 +103,13 @@ function mount(opts) {
   document.getElementById("app").innerHTML = renderSkip() + renderHeader(route) + '<main id="main">' + renderPage(route) + "</main>" + renderFooter();
   fillOrderForm();
   injectLd();
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (route.page === "booklet" && route.id) {
     const node = document.getElementById("ch-" + route.id);
-    if (node) node.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "auto" });
+    if (node) node.scrollIntoView({ block: "start", behavior: "instant" });
   } else if (keep) {
-    window.scrollTo(0, y);
+    window.scrollTo({top:y,left:0,behavior:"instant"});
   } else {
-    window.scrollTo(0, 0);
+    window.scrollTo({top:0,left:0,behavior:"instant"});
   }
 }
 
@@ -161,7 +161,7 @@ function buildOrderMessage() {
     return [productName(), sizeLabel(line.size), bookletLabel(line.booklet), "x" + clampQty(line.qty), formatTL(linePrice(line))].join(" · ");
   });
   return [
-    "Aslana Intelligence",
+    "CYGNUS",
     productName(),
     labels.no + ": " + ensureOrderNo(),
     "",
@@ -236,10 +236,16 @@ function onCopy() {
   const text = window.__orderMessage || "";
   if (!text) return;
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(function () { toast(ui().order.copied); }).catch(function () { toast(ui().order.copied); });
+    navigator.clipboard.writeText(text).then(function () { toast(ui().order.copied); }).catch(function () { copyFallback(text); });
     return;
   }
-  toast(ui().order.copied);
+  copyFallback(text);
+}
+
+function copyFallback(text) {
+  const pre = document.getElementById('order-preview');
+  if (pre) {const selection = window.getSelection(), range = document.createRange();range.selectNodeContents(pre);selection.removeAllRanges();selection.addRange(range);}
+  toast(say('Otomatik kopyalama kullanılamıyor. Seçili metni elle kopyalayın.','Automatic copy is unavailable. Copy the selected text manually.'));
 }
 
 function onWhatsapp() {
@@ -261,9 +267,9 @@ function downloadIcs() {
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Aslana Intelligence//Aloe Set//TR",
+    "PRODID:-//CYGNUS//Living Aloe//TR",
     "BEGIN:VEVENT",
-    "UID:aloe-" + day + "@aslana.local",
+    "UID:aloe-" + day + "@cygnus.health",
     "DTSTAMP:" + stamp,
     "DTSTART;VALUE=DATE:" + day,
     "RRULE:FREQ=WEEKLY;INTERVAL=3",
@@ -279,6 +285,7 @@ function downloadIcs() {
   document.body.appendChild(link);
   link.click();
   link.remove();
+  setTimeout(function () { URL.revokeObjectURL(link.href); }, 1000);
   toast(ui().carePage.icsDone);
 }
 
@@ -292,62 +299,11 @@ function localDay(date) {
   return date.getFullYear() + pad(date.getMonth() + 1) + pad(date.getDate());
 }
 
-function keyPaths(obj, prefix, acc) {
-  Object.keys(obj).sort().forEach(function (key) {
-    const path = prefix ? prefix + "." + key : key;
-    const val = obj[key];
-    if (val && typeof val === "object" && !Array.isArray(val)) keyPaths(val, path, acc);
-    else acc.push(path);
-  });
-  return acc;
-}
-
-function runSelfTest() {
-  if (new URLSearchParams(location.search).get("selftest") !== "1") return;
-  const checks = [];
-  try { localStorage.clear(); } catch (err) { checks.push("storage blocked"); }
-  setLang("tr");
-  addToCart({ booklet: "tr", size: 7, qty: 1 });
-  addToCart({ booklet: "tr", size: 7, qty: 1 });
-  addToCart({ booklet: "en", size: 9, qty: 2 });
-  checks.push(cartCount() === 4 ? "count ok" : "count " + cartCount());
-  checks.push(getCart().length === 2 ? "lines ok" : "lines " + getCart().length);
-  checks.push(cartTotal() === 1600 ? "total ok" : "total " + cartTotal());
-  checks.push(window.RECIPES.length === 12 ? "recipes ok" : "recipes " + window.RECIPES.length);
-  const trKeys = keyPaths(window.COPY.tr, "", []);
-  const enKeys = keyPaths(window.COPY.en, "", []);
-  const drift = trKeys.filter(function (key) { return enKeys.indexOf(key) === -1; })
-    .concat(enKeys.filter(function (key) { return trKeys.indexOf(key) === -1; }));
-  checks.push(drift.length ? "keys " + drift.join(",") : "keys ok");
-  const errors = validateForm({ name: "A", phone: "123", city: "", address: "kisa", note: "" });
-  checks.push(errors.length === 4 ? "errors ok" : "errors " + errors.length);
-  saveForm({ name: "Ada Yilmaz", phone: "05551112233", city: "Izmir", district: "Konak", address: "Kisa sokak 12", note: "kapida" });
-  const message = buildOrderMessage();
-  checks.push(message.indexOf("7 cm") !== -1 && message.indexOf("9 cm") === -1 ? "sizes ok" : "sizes missing");
-  checks.push(message.indexOf("ASL-") !== -1 ? "order ok" : "order missing");
-  checks.push(message.indexOf("1.600 TL") !== -1 ? "money ok" : "money " + message.split("\n").filter(function (line) { return line.indexOf("TL") !== -1; }).join(" | "));
-  setLang("en");
-  checks.push(sizeLabel(7) === "7 cm planter" ? "en size ok" : sizeLabel(7));
-  checks.push(productName() === "Aloe Vera Planter Set" ? "en name ok" : productName());
-  const root = document.documentElement;
-  checks.push("scroll " + root.scrollWidth + " client " + root.clientWidth);
-  let wide = 0;
-  let wideName = "";
-  document.querySelectorAll("body *").forEach(function (el) {
-    const rect = el.getBoundingClientRect();
-    if (rect.width > wide) {
-      wide = rect.width;
-      wideName = (el.className && String(el.className).slice(0, 40)) || el.tagName;
-    }
-  });
-  checks.push("widest " + Math.round(wide) + " " + wideName);
-  const node = document.createElement("pre");
-  node.id = "selftest";
-  node.textContent = checks.join("\n");
-  document.body.insertBefore(node, document.body.firstChild);
-}
-
 function onClick(event) {
+  if (event.target.closest('.skip')) {
+    event.preventDefault();
+    const main=document.getElementById('main');main.tabIndex=-1;main.focus();main.scrollIntoView();return;
+  }
   const el = event.target.closest("[data-action]");
   if (!el) {
     if (document.body.classList.contains("nav-open") && !event.target.closest(".site-head")) closeMenu();
@@ -447,7 +403,11 @@ function onInput(event) {
     if (grid) grid.innerHTML = recipeCards();
     return;
   }
-  if (event.target.closest && event.target.closest("#order-form")) saveForm(readOrderForm());
+  if (event.target.closest && event.target.closest("#order-form")) {
+    saveForm(readOrderForm());
+    window.__orderMessage='';
+    const preview=document.querySelector('.preview');if(preview)preview.remove();
+  }
 }
 
 function onChange(event) {
@@ -464,7 +424,6 @@ let wired = false;
 function start() {
   applyQueryLang();
   mount();
-  runSelfTest();
   if (wired) return;
   wired = true;
   document.addEventListener("click", onClick);

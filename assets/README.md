@@ -1,0 +1,11 @@
+# Visual assets
+
+`living-aloe-concept.jpg` is an AI-generated illustrative product concept, made with the built-in image-generation tool on 21 October 2026. It is not a photograph of the grower’s inventory or a species identification. The original plant photographs mentioned in the pasted conversation were not attached. Visible captions and alt text identify this concept. JPEG conversion used Pillow; the generated PNG original remains in the Codex generated-images directory.
+
+Generation prompt:
+
+> Use case: product-mockup. Create a photorealistic editorial botanical photograph for the CYGNUS living aloe kit website. Portrait 3:4 framing. One real-looking YOUNG aloe-type pup, with long slender pointed medium-green leaves, small irregular white speckles and fine serrated edges, slightly wild and asymmetrical, around 8 leaves. Not broad chunky commercial spa aloe. Growing in a small plain dark olive-black 7 cm PLASTIC nursery pot with a thin rim, subtly tapered body and drainage. On a warm limestone windowsill in a Turkish home, soft early morning sunlight from upper left, beautiful realistic diagonal window shadows across plaster wall and stone. Nearby a closed thin cream paper botanical booklet, a small blank kraft adoption card, and a folded natural linen cloth. Elegant, warm, tactile, quiet botanical magic, muted sage olive cream stone. Plant is the main subject in the middle, fills upper two thirds, grounded with pot fully visible, shallow depth of field but leaves sharp, honest imperfections. No cut leaves, no gel, no cosmetics, no glass, no ceramic pot, no flowers, no illustration, no fantastical glow, no people, NO text or logos anywhere. This is illustrative product concept photography, not evidence of actual inventory. Save output so it can be used as a local website asset.
+
+`passport-qr.svg` is generated locally by ReportLab and encodes `https://cygnus.health/#/passport`. Verify after deployment before printing. No external QR service receives visitor information. The booklet mockups and growth drawings on the website are native HTML/CSS/SVG illustrations; they do not represent manufactured packaging or growth forecasts.
+
+The older `hero.jpg`, `booklet.jpg`, `window.jpg` and `gel.jpg` remain available as original repository assets but are not used by the redesigned pages.

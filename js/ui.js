@@ -327,7 +327,7 @@ function onClick(event) {
       img.src = el.dataset.src;
       img.alt = el.querySelector("img") ? el.querySelector("img").alt : img.alt;
     }
-    document.querySelectorAll(".thumb").forEach(function (btn) { btn.classList.toggle("on", btn === el); });
+    document.querySelectorAll(".thumb").forEach(function (btn) { btn.classList.toggle("on", btn === el); btn.setAttribute("aria-pressed", String(btn === el)); });
     return;
   }
   if (action === "shop-qty") {

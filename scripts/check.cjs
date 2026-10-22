@@ -7,7 +7,7 @@ const context={console,URLSearchParams,Intl,Date,Math,Set,JSON,Number,String,Obj
   document:{addEventListener(){},getElementById(){return null;}},
 };
 context.window=context;vm.createContext(context);
-for(const file of ['config','store','content','recipes','recipe-book','pages','experience','ui']) {
+for(const file of ['config','store','content','recipes','recipe-book','pages','experience','refinement','ui']) {
   const code=fs.readFileSync(`js/${file}.js`,'utf8').replace(/\nstart\(\);\s*$/,'');
   vm.runInContext(code,context,{filename:`js/${file}.js`});
 }
@@ -74,6 +74,13 @@ check('storage failure is reported instead of claiming success',()=>{
 check('unknown routes fall back and passport/greenhouse routes resolve',()=>{
   for(const p of ['passport','greenhouse','story']){context.location.hash='#/'+p;assert.equal(context.parseRoute().page,p);}
   context.location.hash='#/unknown';assert.equal(context.parseRoute().page,'home');
+});
+check('homepage presents the complete botanical experience in order',()=>{
+  context.setLang('en');const html=context.renderHome();
+  const markers=['botanical-hero','kit-editorial','complete-kit','journal-showcase','growing-section','studio-feature','journal-feature','story-band','home-faq','final-invitation'];
+  for(let i=1;i<markers.length;i++)assert.ok(html.indexOf(markers[i])>html.indexOf(markers[i-1]),markers[i]);
+  assert.ok(html.includes('Beauty begins'));assert.ok(html.includes('not an actual product photograph'));
+  assert.equal(context.productShots().length,4);assert.equal(context.CARE_CHAPTERS.length,11);
 });
 check('public local assets and PDF downloads exist',()=>{
   for(const file of ['assets/living-aloe-concept.jpg','assets/passport-qr.svg','output/pdf/cygnus-aloe-recipe-book-tr-en.pdf','output/pdf/cygnus-adoption-card-tr-en.pdf'])assert.ok(fs.statSync(file).size>100);

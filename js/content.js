@@ -15,7 +15,7 @@ function txList(value) {
 }
 
 function productName() {
-  return getLang() === "en" ? "The Living Aloe Ritual Kit" : "Yaşayan Aloe Ritüel Seti";
+  return getLang() === "en" ? "The Living Aloe Beauty Kit" : "Yaşayan Aloe Güzellik Seti";
 }
 
 function bookletLabel(code) {
@@ -41,7 +41,7 @@ window.COPY = {
         "desc": "Türkiye’de yetişen genç bir aloe, 7 cm plastik saksı, botanik günlük ve kişisel bitki pasaportu. Biraz bitki. Biraz sihir."
       },
       "shop": {
-        "title": "Yaşayan Aloe Ritüel Seti — CYGNUS",
+        "title": "Yaşayan Aloe Güzellik Seti — CYGNUS",
         "desc": "Türkiye’de yetişen genç bir aloe, 7 cm plastik saksı, botanik günlük ve kişisel bitki pasaportu. Biraz bitki. Biraz sihir."
       },
       "booklet": {
@@ -285,7 +285,7 @@ window.COPY = {
         "desc": "A young aloe grown in Türkiye, a 7 cm plastic nursery pot, a botanical journal and your own plant passport. A little plant. A little magic."
       },
       "shop": {
-        "title": "The Living Aloe Ritual Kit — CYGNUS",
+        "title": "The Living Aloe Beauty Kit — CYGNUS",
         "desc": "A young aloe grown in Türkiye, a 7 cm plastic nursery pot, a botanical journal and your own plant passport. A little plant. A little magic."
       },
       "booklet": {
@@ -623,12 +623,12 @@ window.CHAPTERS = [
     },
     "paras": {
       "tr": [
-        "Bu bitkinin kesin türü ve kozmetik kullanıma uygunluğu henüz doğrulanmadı. Bu nedenle hasat ve cilde uygulama adımlarını yayımlamıyoruz.",
-        "Aloe vera yaprağının iç jeli ile dış tabakalardaki lateks farklıdır. Bu ayrım, evde hazırlanan bir karışımın güvenli olduğunu kanıtlamaz."
+        "Yetiştirici bu bitkiyi Aloe vera olarak tanımlar. Bu, bağımsız botanik doğrulama veya kozmetik uygunluk testi değildir. Genç kit bitkisini hasat etmeyin; olgunluk tek başına güvenlik onayı vermez.",
+        "Aloe vera iç yaprak jeli, sarı lateks ve yeşil kabuk farklı malzemelerdir. Evde ayırmak steriliteyi veya aloin düzeyini doğrulamaz. Tüketim, göz çevresi kullanımı ve saklanan ev yapımı yüz spreyi önerilmez."
       ],
       "en": [
-        "The exact species and cosmetic suitability of this plant are not yet confirmed. Harvesting and topical preparation instructions are therefore not published.",
-        "Aloe vera inner-leaf gel and latex from the outer layers are different materials. That distinction does not establish the safety of a homemade mixture."
+        "The grower identifies this plant as Aloe vera. This is not independent botanical verification or cosmetic suitability testing. Do not harvest the young kit plant; maturity alone does not establish safety.",
+        "Aloe vera inner gel, yellow latex and green rind are different materials. Home preparation does not verify sterility or aloin levels. Do not ingest, use around the eyes or make stored homemade facial mist."
       ]
     }
   },
@@ -641,11 +641,11 @@ window.CHAPTERS = [
     "paras": {
       "tr": [
         "Pencere önünde birkaç sessiz dakika, bir gözlem çizimi veya bir aylık fotoğraf: ritüel bugün başlayabilir. Ritüel stüdyosunda bitkiye zarar vermeyen fikirler var.",
-        "Kozmetik tarifler tür doğrulaması ve uzman güvenlik incelemesinden sonra değerlendirilebilir."
+        "Pratik tarif kitabındaki ev fikirleri test edilmiş kozmetik formüller değildir. Uygun bitki ve malzemeler doğrulanmadan cilde uygulamayın. Temiz araçlar kullanın; taze hazırlıkları saklamayın. Bitki portresi veya çizimiyle başlayabilirsiniz."
       ],
       "en": [
         "A few quiet minutes by the window, an observation sketch, or a monthly photograph: the ritual can begin today. The studio has ideas that leave the plant intact.",
-        "Cosmetic recipes can be considered after species confirmation and expert safety review."
+        "Home ideas in the practical recipe book are not tested cosmetic formulations. Do not apply without confirming plant and ingredient suitability. Use clean equipment and do not store fresh preparations. A plant portrait or sketch can begin today."
       ]
     },
     "link": "recipes"
@@ -872,3 +872,18 @@ window.CHECKS = [
     "en": "I made this month’s growth note."
   }
 ];
+
+window.CHAPTERS.splice(4,0,{
+ id:'soil-problems',title:{tr:'Toprak, kökler ve küçük sorunlar',en:'Soil, roots and little problems'},
+ paras:{tr:[
+ 'Drenaj delikleri olan 7 cm plastik saksıyı kullanın. Sukulentlere uygun, havadar ve suyu hızla süzen bir yetiştirme ortamı seçin. Kökler saksıyı doldurduğunda yalnızca bir boy büyütün; bitkiyi aynı derinlikte tutun.',
+ 'Yumuşak yaprak ve sürekli ıslak toprak görürseniz daha fazla su vermeyin; drenajı ve kökleri kontrol edin. Işığa uzanan büyümeyi daha aydınlık bir yere yavaşça alıştırın. Yeni kahverengi izler sert güneşten sonra başladıysa ışığı yumuşatın.',
+ 'Gövde dibinde yumuşama, hızla yayılan lekeler veya zararlılar varsa bitkiyi diğerlerinden ayırın ve yetiştiriciden yardım alın. Belirtiler tek başına kesin teşhis değildir.'
+ ],en:[
+ 'Use the 7 cm plastic pot with drainage holes and an airy, freely draining succulent growing medium. When roots fill it, move up only one pot size and keep the plant at the same planting depth.',
+ 'If leaves soften while the soil stays wet, do not add water; inspect drainage and roots. Gradually improve light for stretched growth. Soften exposure if new brown marks follow harsh sunlight.',
+ 'Separate a plant with a soft base, spreading marks or pests from other plants and ask the grower for help. Symptoms alone are not a definite diagnosis.'
+ ]}
+});
+// Preserve the original care journal alongside the practical recipe book.
+window.CARE_CHAPTERS = window.CHAPTERS;

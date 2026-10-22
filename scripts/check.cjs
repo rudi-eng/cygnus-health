@@ -7,7 +7,7 @@ const context={console,URLSearchParams,Intl,Date,Math,Set,JSON,Number,String,Obj
   document:{addEventListener(){},getElementById(){return null;}},
 };
 context.window=context;vm.createContext(context);
-for(const file of ['config','store','content','recipes','pages','experience','ui']) {
+for(const file of ['config','store','content','recipes','recipe-book','pages','experience','ui']) {
   const code=fs.readFileSync(`js/${file}.js`,'utf8').replace(/\nstart\(\);\s*$/,'');
   vm.runInContext(code,context,{filename:`js/${file}.js`});
 }
@@ -28,10 +28,18 @@ check('all nine pages and ritual details render in both languages',()=>{
     for(const r of context.RECIPES)assert.ok(context.renderPage({page:'recipes',id:r.id}).includes(context.tx(r.title)));
   }
 });
-check('topical recipes and unsafe storage guidance are not published',()=>{
-  assert.equal(context.RECIPES.length,6);assert.ok(context.RECIPES.every(r=>r.gelTsp===0));
-  assert.ok(!/7 days|3 days|7 gün|3 gün|eight weeks|8 hafta/.test(JSON.stringify(context.CHAPTERS)));
-  assert.ok(context.renderRecipes({id:''}).includes('species confirmation'));
+check('practical recipes include ingredients, directions and precautions in both languages',()=>{
+  assert.equal(context.BOOK_RECIPES.length,6);assert.equal(context.RECIPES.length,12);
+  for(const lang of ['tr','en']){context.setLang(lang);for(const r of context.BOOK_RECIPES){
+    assert.ok(r.ingredients[lang].length>=2);assert.ok(r.steps[lang].length>=4);assert.ok(r.caution[lang].length>30);
+    const html=context.renderRecipeDetail(r);assert.ok(html.includes(context.ui().common.ingredients));assert.ok(html.includes('before-start'));
+  }}
+});
+check('book separates medical evidence and excludes unvalidated storage promises',()=>{
+  assert.equal(context.CHAPTERS.length,11);const chapter=context.CHAPTERS.find(c=>c.id==='benefits');assert.ok(chapter.paras.en.join(' ').includes('no medical-treatment recipe'));
+  assert.ok(!/fridge for 7 days|fridge past 3 days|buzdolabında 7 gün|buzdolabında 3 gün/.test(JSON.stringify(context.CHAPTERS)));
+  assert.ok(context.BOOK_RECIPES.every(r=>/discard/i.test(r.steps.en.join(' '))));
+  context.setLang('en');assert.ok(context.renderRecipes({id:''}).includes('not medical-treatment recipes'));
 });
 check('recipe search and saved filtering work',()=>{
   context.setSearch('portrait');context.setRecipeFilter('all');assert.equal(context.visibleRecipes().length,1);
@@ -68,6 +76,6 @@ check('unknown routes fall back and passport/greenhouse routes resolve',()=>{
   context.location.hash='#/unknown';assert.equal(context.parseRoute().page,'home');
 });
 check('public local assets and PDF downloads exist',()=>{
-  for(const file of ['assets/living-aloe-concept.jpg','assets/passport-qr.svg','output/pdf/cygnus-botanical-journal-tr-en.pdf','output/pdf/cygnus-adoption-card-tr-en.pdf'])assert.ok(fs.statSync(file).size>100);
+  for(const file of ['assets/living-aloe-concept.jpg','assets/passport-qr.svg','output/pdf/cygnus-aloe-recipe-book-tr-en.pdf','output/pdf/cygnus-adoption-card-tr-en.pdf'])assert.ok(fs.statSync(file).size>100);
 });
 console.log(`\n${count} behavior checks passed.`);

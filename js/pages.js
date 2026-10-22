@@ -90,7 +90,7 @@ function renderBooklet(route) {
   }).join("");
   return ''
     + '<section class="wrap page-head"><p class="kicker">' + esc(b.kicker) + "</p><h1>" + esc(ui().nav.booklet) + '</h1><p class="lede">' + esc(b.lede) + '</p><div class="hero-actions no-print"><button class="btn" type="button" data-action="print">' + esc(getLang()==='en'?'Print / save as PDF':'Yazdır / PDF olarak kaydet') + '</button><a class="btn ghost" href="#/passport">' + esc(getLang()==='en'?'Open my passport':'Pasaportumu aç') + '</a></div><aside class="disclaimer">' + esc(b.disclaimer) + "</aside></section>"
-    + '<section class="wrap no-print"><div class="print-downloads"><a class="btn ghost" href="output/pdf/cygnus-botanical-journal-tr-en.pdf" download>'+esc(say('İki dilli günlüğü indir · PDF','Download the bilingual journal · PDF'))+'</a><a class="editorial-link" href="output/pdf/cygnus-adoption-card-tr-en.pdf" download>'+esc(say('Sahiplenme kartı · PDF','Adoption card · PDF'))+'</a><img src="assets/passport-qr.svg" alt="'+esc(say('cygnus.health bitki pasaportunu açan QR kod','QR code for the cygnus.health plant passport'))+'" width="90" height="90"><p class="fine">cygnus.health/#/passport</p></div></section><div class="book wrap"><nav class="ch-nav no-print">' + nav + "</nav><div>" + chapters + '<p class="fine">' + esc(ui().common.updated) + "</p></div></div>";
+    + '<section class="wrap no-print"><div class="print-downloads"><a class="btn ghost" href="output/pdf/cygnus-aloe-recipe-book-tr-en.pdf" download>'+esc(say('İki dilli tarif kitabını indir · PDF','Download the bilingual recipe book · PDF'))+'</a><a class="editorial-link" href="output/pdf/cygnus-adoption-card-tr-en.pdf" download>'+esc(say('Sahiplenme kartı · PDF','Adoption card · PDF'))+'</a><img src="assets/passport-qr.svg" alt="'+esc(say('cygnus.health bitki pasaportunu açan QR kod','QR code for the cygnus.health plant passport'))+'" width="90" height="90"><p class="fine">cygnus.health/#/passport</p></div></section><div class="book wrap"><nav class="ch-nav no-print">' + nav + "</nav><div>" + chapters + '<p class="fine">' + esc(ui().common.updated) + "</p></div></div>";
 }
 
 function renderSources() {
@@ -103,11 +103,9 @@ function renderSources() {
 function visibleRecipes() {
   const q = getSearch().trim().toLocaleLowerCase("tr");
   const cat = getRecipeFilter();
-  const gel = getGelLimit();
   return window.RECIPES.filter(function (recipe) {
     if (cat === "saved" && !isFav(recipe.id)) return false;
     if (cat !== "all" && cat !== "saved" && recipe.cat !== cat) return false;
-    if (recipe.gelTsp > gel) return false;
     if (!q) return true;
     const blob = [tx(recipe.title), tx(recipe.summary), txList(recipe.steps).join(" ")].join(" ").toLocaleLowerCase("tr");
     return blob.indexOf(q) !== -1;
@@ -135,7 +133,7 @@ function renderRecipes(route) {
     + '<section class="wrap page-head"><p class="kicker">' + esc(r.kicker) + "</p><h1>" + esc(ui().nav.recipes) + '</h1><p class="lede">' + esc(r.lede) + "</p>" + callout(ui().smallCallout) + "</section>"
     + '<section class="wrap no-print"><div class="filters" role="toolbar">' + filters + "</div>"
     + '<label class="search"><span>' + esc(r.search) + '</span><input id="recipe-search" type="search" value="' + esc(getSearch()) + '"></label>'
-    + '</section><section class="wrap"><aside class="studio-lock"><span aria-hidden="true">◇</span><div><h3>' + esc(getLang()==='en'?'Growing first. Formulating later.':'Önce büyütelim. Tarifler sonra.') + '</h3><p>' + esc(getLang()==='en'?'The cosmetic recipe collection is awaiting species confirmation and safety review. These six rituals need no harvested aloe.':'Kozmetik tarif koleksiyonu tür doğrulaması ve güvenlik incelemesi bekliyor. Bu altı ritüel için aloe yaprağı kesmeniz gerekmez.') + '</p></div></aside></section>'
+    + '</section><section class="wrap"><aside class="studio-lock"><span aria-hidden="true">◇</span><div><h3>' + esc(r.noticeTitle) + '</h3><p>' + esc(r.notice) + '</p><a href="#/booklet/before-start">' + esc(say('Güvenlik rehberi','Read the safety guide')) + '</a> · <a href="#/booklet/benefits">' + esc(say('Faydalar ve araştırma','Benefits and research')) + '</a></div></aside><p><a class="editorial-link" href="output/pdf/cygnus-aloe-recipe-book-tr-en.pdf" download>' + esc(say('Tarif kitabını indir · Türkçe / İngilizce PDF','Download the recipe book · Turkish / English PDF')) + ' ↗</a></p></section>'
     + '<section class="wrap cards recipes" id="recipe-grid">' + recipeCards() + "</section>";
 }
 
@@ -147,7 +145,9 @@ function renderRecipeDetail(recipe) {
     + '<p class="kicker">' + esc(catLabel(recipe.cat)) + "</p>"
     + "<h1>" + esc(tx(recipe.title)) + "</h1>"
     + "<p class=\"lede\">" + esc(tx(recipe.summary)) + "</p>"
+    + (recipe.practical ? '<aside class="disclaimer">'+esc(say('Olgun, doğru tanımlanmış Aloe vera içindir; genç kit bitkisini kesmeyin. Önce kitaptaki hazırlık ve güvenlik bölümünü okuyun.','For mature, correctly identified Aloe vera; do not harvest the young kit plant. Read the book’s preparation and safety pages first.'))+' <a href="#/booklet/before-start">'+esc(say('Başlamadan önce','Before you begin'))+'</a></aside>' : '')
     + '<dl class="meta"><div><dt>' + esc(ui().common.minutes) + "</dt><dd>" + recipe.minutes + "</dd></div><div><dt>" + esc(ui().recipesPage.gelNeed) + "</dt><dd>" + esc(tx(recipe.gel)) + "</dd></div></dl>"
+    + (recipe.ingredients ? '<h2>'+esc(ui().common.ingredients)+'</h2><ul class="spec">'+txList(recipe.ingredients).map(item=>'<li>'+esc(item)+'</li>').join('')+'</ul>' : '')
     + "<h2>" + esc(ui().common.steps) + "</h2>" + ol(txList(recipe.steps))
     + '<aside class="disclaimer">' + esc(ui().common.caution) + ". " + esc(tx(recipe.caution)) + "</aside>"
     + '<div class="hero-actions no-print"><button type="button" class="btn ghost" data-action="fav" data-id="' + recipe.id + '">' + esc(saved ? ui().recipesPage.favOn : ui().recipesPage.fav) + '</button><button type="button" class="btn" data-action="print">' + esc(ui().common.print) + "</button></div>"

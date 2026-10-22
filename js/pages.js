@@ -86,7 +86,7 @@ function renderBooklet(route) {
         : "";
     const sources = ch.id === "sources" ? renderSources() : "";
     const steps = txList(ch.steps);
-    return '<article class="chapter" id="ch-' + ch.id + '"><p class="kicker">0' + (index + 1) + "</p><h2>" + esc(tx(ch.title)) + "</h2>" + paras(txList(ch.paras)) + (steps.length ? ol(steps) : "") + fig + link + sources + "</article>";
+    return '<article class="chapter" id="ch-' + ch.id + '"><p class="kicker">' + String(index + 1).padStart(2, '0') + "</p><h2>" + esc(tx(ch.title)) + "</h2>" + paras(txList(ch.paras)) + (steps.length ? ol(steps) : "") + fig + link + sources + "</article>";
   }).join("");
   return ''
     + '<section class="wrap page-head"><p class="kicker">' + esc(b.kicker) + "</p><h1>" + esc(ui().nav.booklet) + '</h1><p class="lede">' + esc(b.lede) + '</p><div class="hero-actions no-print"><button class="btn" type="button" data-action="print">' + esc(getLang()==='en'?'Print / save as PDF':'Yazdır / PDF olarak kaydet') + '</button><a class="btn ghost" href="#/passport">' + esc(getLang()==='en'?'Open my passport':'Pasaportumu aç') + '</a></div><aside class="disclaimer">' + esc(b.disclaimer) + "</aside></section>"

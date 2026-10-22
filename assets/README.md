@@ -9,3 +9,17 @@ Generation prompt:
 `passport-qr.svg` is generated locally by ReportLab and encodes `https://cygnus.health/#/passport`. Verify after deployment before printing. No external QR service receives visitor information. The booklet mockups and growth drawings on the website are native HTML/CSS/SVG illustrations; they do not represent manufactured packaging or growth forecasts.
 
 The older `hero.jpg`, `booklet.jpg`, `window.jpg` and `gel.jpg` remain available as original repository assets but are not used by the redesigned pages.
+
+
+## Premium collection — 22 October 2026
+
+Original images generated with the built-in image-generation tool for this project; no third-party reference images were downloaded or reused:
+
+- `kit-concept.jpg`: complete kit still life: slender speckled young aloe and offsets in a 7 cm black plastic nursery pot, gritty medium, protective kraft box, printed botanical booklet, care/adoption cards and paper tag.
+- `journal-concept.jpg`: realistic open A5 botanical journal with olive illustrations, ruled diary, adoption card and concept QR tag.
+- `leaf-concept.jpg`: macro lifestyle view of narrow serrated, speckled leaves and natural offsets on a warm windowsill.
+- `studio-concept.jpg`: clean empty bowl, spoon, linen and notebook; intact plant in the background. Bottle and tools are editorial props, not kit contents. No harvesting or skin application is depicted.
+
+Each prompt specified warm sunlit cream/olive/sage editorial photography, realistic materials, slender narrow serrated speckled foliage, no broad commercial spa aloe, no medical claims and no watermark. The original reference photographs were unavailable, so morphology is based on the owner's written description, not verified photographic matching or species identification. All four assets are visibly identified as AI visual concepts. Generated QR-like marks are not functional tags; the separate `passport-qr.svg` is the functional locally generated code.
+
+The generated 1536 × 1024 originals remain in the Codex generated-images directory. Pillow exports optimized 1440 × 960 and 640 × 427 JPEGs (87/83 quality). These are responsive local assets, not external hotlinks. The approved existing hero photograph remains unchanged.

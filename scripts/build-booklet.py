@@ -59,7 +59,7 @@ for lang in ['tr','en']:
     paragraph(c,'Bakım, gözlem ve size ait küçük bir hikâye.' if lang=='tr' else 'Care, discovery, and a little story of your own.',M,111,W-2*M,tinyStyle)
     c.showPage();page+=1
     for index,ch in enumerate(data['chapters']):
-        base(c,page,lang.upper());y=H-78
+        base(c,page,lang.upper());plant(c,W-M-18,H-82,.22);y=H-78
         c.setFont('Arial',8);c.setFillColor(MUTED);c.drawString(M,y,f'{index+1:02d} / FIELD NOTES');y-=23
         y=paragraph(c,html.escape(ch['title'][lang]),M,y,W-2*M,titleStyle)-12
         for p in ch['paras'][lang]:
@@ -67,7 +67,7 @@ for lang in ['tr','en']:
         if ch['id']=='sources':
             for src in data['sources']:
                 y=paragraph(c,'<b>'+html.escape(src['title'])+'</b><br/>'+html.escape(src['note'][lang])+'<br/><link href="'+html.escape(src['url'])+'" color="#526847">'+html.escape(src['url'])+'</link>',M,y,W-2*M,tinyStyle)
-            y=paragraph(c,'Kaynaklar 21 Ekim 2026 tarihinde kontrol edildi.' if lang=='tr' else 'Sources checked on 21 October 2026.',M,y,W-2*M,tinyStyle)
+            y=paragraph(c,'Kaynaklar 22 Ekim 2026 tarihinde kontrol edildi.' if lang=='tr' else 'Sources checked on 22 October 2026.',M,y,W-2*M,tinyStyle)
         elif ch['id']=='diary':
             c.setStrokeColor(LINE)
             for liney in range(int(y-14),60,-26):c.line(M,liney,W-M,liney)

@@ -35,12 +35,11 @@ function renderShop() {
   const s = ui().shop;
   const choice = getShopChoice();
   const shot = window.__shot || "assets/living-aloe-concept.jpg";
-  const shots = [
-    ["assets/living-aloe-concept.jpg", ui().alts.hero]
-  ];
+  const shots = productShots();
   const thumbs = shots.map(function (item) {
     const on = item[0] === shot ? " on" : "";
-    return '<button type="button" class="thumb' + on + '" data-action="shot" data-src="' + item[0] + '"><img src="' + item[0] + '" alt="' + esc(item[1]) + '"></button>';
+    const thumbSrc = item[0].includes('living-aloe') ? item[0] : item[0].replace('.jpg','-640.jpg');
+    return '<button type="button" class="thumb' + on + '" aria-pressed="' + (item[0] === shot) + '" data-action="shot" data-src="' + item[0] + '"><img src="' + thumbSrc + '" alt="' + esc(item[1]) + '" width="74" height="92" loading="lazy"></button>';
   }).join("");
   const books = ["tr", "en", "both"].map(function (code) {
     const checked = choice.booklet === code ? " checked" : "";
@@ -61,7 +60,7 @@ function renderShop() {
     + '<p class="price-lg">' + esc(formatTL(window.ASLANA_CONFIG.priceTL)) + "</p>"
     + callout(ui().smallCallout)
     + "<h2>" + esc(s.bookTitle) + '</h2><div class="choice">' + books + "</div>"
-    + '<div class="qty-block"><span>' + esc(s.qty) + '</span><div class="qty-row"><button type="button" data-action="shop-qty" data-dir="-1" aria-label="-">−</button><input id="shop-qty" inputmode="numeric" value="' + choice.qty + '"><button type="button" data-action="shop-qty" data-dir="1" aria-label="+">+</button></div></div>'
+    + '<div class="qty-block"><span>' + esc(s.qty) + '</span><div class="qty-row"><button type="button" data-action="shop-qty" data-dir="-1" aria-label="-">−</button><input id="shop-qty" aria-label="' + esc(s.qty) + '" inputmode="numeric" value="' + choice.qty + '"><button type="button" data-action="shop-qty" data-dir="1" aria-label="+">+</button></div></div>'
     + '<button type="button" class="btn wide" data-action="add-cart">' + esc(s.add) + "</button>"
     + "<p class=\"fine\">" + esc(s.ship) + "</p>"
     + "</div></section>"
@@ -90,6 +89,7 @@ function renderBooklet(route) {
   }).join("");
   return ''
     + '<section class="wrap page-head"><p class="kicker">' + esc(b.kicker) + "</p><h1>" + esc(ui().nav.booklet) + '</h1><p class="lede">' + esc(b.lede) + '</p><div class="hero-actions no-print"><button class="btn" type="button" data-action="print">' + esc(getLang()==='en'?'Print / save as PDF':'Yazdır / PDF olarak kaydet') + '</button><a class="btn ghost" href="#/passport">' + esc(getLang()==='en'?'Open my passport':'Pasaportumu aç') + '</a></div><aside class="disclaimer">' + esc(b.disclaimer) + "</aside></section>"
+    + renderJournalFeature()
     + '<section class="wrap no-print"><div class="print-downloads"><a class="btn ghost" href="output/pdf/cygnus-aloe-recipe-book-tr-en.pdf" download>'+esc(say('İki dilli tarif kitabını indir · PDF','Download the bilingual recipe book · PDF'))+'</a><a class="editorial-link" href="output/pdf/cygnus-adoption-card-tr-en.pdf" download>'+esc(say('Sahiplenme kartı · PDF','Adoption card · PDF'))+'</a><img src="assets/passport-qr.svg" alt="'+esc(say('cygnus.health bitki pasaportunu açan QR kod','QR code for the cygnus.health plant passport'))+'" width="90" height="90"><p class="fine">cygnus.health/#/passport</p></div></section><div class="book wrap"><nav class="ch-nav no-print">' + nav + "</nav><div>" + chapters + '<p class="fine">' + esc(ui().common.updated) + "</p></div></div>";
 }
 

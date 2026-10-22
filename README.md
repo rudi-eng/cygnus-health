@@ -22,7 +22,7 @@ Preview: http://127.0.0.1:4173. The server binds to loopback and serves only pub
 - First-week care checklist, city/season notes, growth observations, and calendar-file downloads for soil checks.
 - Private passport: plant name, adoption date, location note, dated entries, observed leaf counts, photo compression/preview, and milestone badges tied to recorded actions.
 - JSON export and validated, explicitly confirmed restore. Up to 120 entries and 12 photos per passport. Photos are resized locally; they are not uploaded.
-- A 24-page A5 Turkish/English practical aloe recipe book, the original 22-page care journal, a printable adoption card, and QR artwork pointing to `https://cygnus.health/#/passport`. Print recipe-book pages 1–12 for Turkish and 13–24 for English.
+- A 24-page A5 Turkish/English practical aloe recipe book, the expanded 24-page care journal, a printable adoption card, and QR artwork pointing to `https://cygnus.health/#/passport`. Print recipe-book pages 1–12 for Turkish and 13–24 for English.
 - Greenhouse concept page with the visitor’s private plant and badges. It does **not** provide community accounts, public posts, moderation or cloud sync.
 
 ## Before commercial launch
@@ -51,4 +51,13 @@ Legacy `aslana-*` browser storage keys are deliberately retained so existing car
 
 ## Verification
 
-Eleven behavior checks cover bilingual routes, cart math, order validation, ritual filters, safety locks, passport persistence, HTML escaping, malformed backups and unavailable storage. Browser checks cover language switching, growth stages, profile and entry persistence, photo preparation/saving, menu navigation, mobile layout and order preparation. PDF pages were rendered with Poppler and visually inspected. Public community sharing, automated notifications and payment processing are intentionally not represented as implemented.
+Thirteen behavior checks cover bilingual routes, cart math, order validation, ritual filters, safety locks, passport persistence, HTML escaping, malformed backups and unavailable storage. Browser checks cover language switching, growth stages, profile and entry persistence, photo preparation/saving, menu navigation, mobile layout and order preparation. PDF pages were rendered with Poppler and visually inspected. Public community sharing, automated notifications and payment processing are intentionally not represented as implemented.
+
+
+## Premium botanical refinement (22 October 2026)
+
+The approved landing page composition, existing features, local storage keys and ₺400 configuration are preserved. The homepage now adds a full kit reveal, a browsable botanical journal, a Recipe Studio introduction, leaf detail, FAQ and final shop invitation. The kit is named Living Aloe Beauty Kit. Four new locally stored AI concepts have responsive JPEG variants and explicit captions; actual sale-plant and final packaging photography are still needed.
+
+`js/refinement.js` and `css/refinement.css` contain the additive editorial sections and gallery data. `window.CARE_CHAPTERS` preserves the care journal before the practical recipe book supplies its own chapters. The care journal now has 24 A5 pages (Turkish pages 1–12, English 13–24), including soil, repotting, common problems and preparation precautions. Both books remain available. The printed QR artwork is functional; QR patterns inside generated photographs are decorative concepts.
+
+See [the before/after and QA record](output/qa/README.md) for rendered screenshots, verification and remaining launch limitations. No production deployment is part of this pull request.
